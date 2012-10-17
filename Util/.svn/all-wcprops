@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 49
+/svnroot/pigoneandcode/!svn/ver/275/Template/Util
+END
+CycleArray.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svnroot/pigoneandcode/!svn/ver/275/Template/Util/CycleArray.cpp
+END
+BigInteger.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svnroot/pigoneandcode/!svn/ver/275/Template/Util/BigInteger.cpp
+END
+BigInteger3.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svnroot/pigoneandcode/!svn/ver/275/Template/Util/BigInteger3.cpp
+END
+Matrix.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svnroot/pigoneandcode/!svn/ver/275/Template/Util/Matrix.cpp
+END
+Fraction.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svnroot/pigoneandcode/!svn/ver/275/Template/Util/Fraction.cpp
+END
+Encoding.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svnroot/pigoneandcode/!svn/ver/275/Template/Util/Encoding.cpp
+END
+BigFraction.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svnroot/pigoneandcode/!svn/ver/275/Template/Util/BigFraction.cpp
+END
+StringOperation.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svnroot/pigoneandcode/!svn/ver/275/Template/Util/StringOperation.cpp
+END
+Character.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svnroot/pigoneandcode/!svn/ver/275/Template/Util/Character.cpp
+END
+GenCombination.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 68
+/svnroot/pigoneandcode/!svn/ver/275/Template/Util/GenCombination.cpp
+END
+Prime.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svnroot/pigoneandcode/!svn/ver/275/Template/Util/Prime.cpp
+END
+SetOperation.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svnroot/pigoneandcode/!svn/ver/275/Template/Util/SetOperation.cpp
+END
+TimeUtil.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svnroot/pigoneandcode/!svn/ver/275/Template/Util/TimeUtil.cpp
+END

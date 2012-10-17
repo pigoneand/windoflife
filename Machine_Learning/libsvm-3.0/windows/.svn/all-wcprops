@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svnroot/pigoneandcode/!svn/ver/275/Template/Machine_Learning/libsvm-3.0/windows
+END
+svm-train.exe
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svnroot/pigoneandcode/!svn/ver/275/Template/Machine_Learning/libsvm-3.0/windows/svm-train.exe
+END
+libsvm.dll
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svnroot/pigoneandcode/!svn/ver/275/Template/Machine_Learning/libsvm-3.0/windows/libsvm.dll
+END
+svm-scale.exe
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svnroot/pigoneandcode/!svn/ver/275/Template/Machine_Learning/libsvm-3.0/windows/svm-scale.exe
+END
+svm-predict.exe
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svnroot/pigoneandcode/!svn/ver/275/Template/Machine_Learning/libsvm-3.0/windows/svm-predict.exe
+END
+svm-toy.exe
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svnroot/pigoneandcode/!svn/ver/275/Template/Machine_Learning/libsvm-3.0/windows/svm-toy.exe
+END

@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 51
+/svnroot/pigoneandcode/!svn/ver/279/Template/Search
+END
+DancingLink.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svnroot/pigoneandcode/!svn/ver/275/Template/Search/DancingLink.cpp
+END
+Simplex.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 63
+/svnroot/pigoneandcode/!svn/ver/279/Template/Search/Simplex.cpp
+END
+TSP.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svnroot/pigoneandcode/!svn/ver/275/Template/Search/TSP.cpp
+END
+GoldSplitSearch.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svnroot/pigoneandcode/!svn/ver/275/Template/Search/GoldSplitSearch.cpp
+END
+MaxClique.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 65
+/svnroot/pigoneandcode/!svn/ver/275/Template/Search/MaxClique.cpp
+END
+BFS.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svnroot/pigoneandcode/!svn/ver/275/Template/Search/BFS.cpp
+END
+FireSearch.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svnroot/pigoneandcode/!svn/ver/275/Template/Search/FireSearch.cpp
+END

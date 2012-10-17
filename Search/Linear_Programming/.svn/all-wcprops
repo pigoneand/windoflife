@@ -1,0 +1,167 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svnroot/pigoneandcode/!svn/ver/275/Template/Search/Linear_Programming
+END
+memoryreachedoutexception.h
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svnroot/pigoneandcode/!svn/ver/275/Template/Search/Linear_Programming/memoryreachedoutexception.h
+END
+indexoutofboundexception.h
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svnroot/pigoneandcode/!svn/ver/275/Template/Search/Linear_Programming/indexoutofboundexception.h
+END
+divisionbyzeroexception.h
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svnroot/pigoneandcode/!svn/ver/275/Template/Search/Linear_Programming/divisionbyzeroexception.h
+END
+pilal.h
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svnroot/pigoneandcode/!svn/ver/275/Template/Search/Linear_Programming/pilal.h
+END
+matrix.cc
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svnroot/pigoneandcode/!svn/ver/275/Template/Search/Linear_Programming/matrix.cc
+END
+notavectorexception.h
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svnroot/pigoneandcode/!svn/ver/275/Template/Search/Linear_Programming/notavectorexception.h
+END
+pilalexceptions.h
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svnroot/pigoneandcode/!svn/ver/275/Template/Search/Linear_Programming/pilalexceptions.h
+END
+matrix.h
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svnroot/pigoneandcode/!svn/ver/275/Template/Search/Linear_Programming/matrix.h
+END
+columnset.cc
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svnroot/pigoneandcode/!svn/ver/275/Template/Search/Linear_Programming/columnset.cc
+END
+solver.cc
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svnroot/pigoneandcode/!svn/ver/275/Template/Search/Linear_Programming/solver.cc
+END
+columnset.h
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svnroot/pigoneandcode/!svn/ver/275/Template/Search/Linear_Programming/columnset.h
+END
+objectivefunction.cc
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svnroot/pigoneandcode/!svn/ver/275/Template/Search/Linear_Programming/objectivefunction.cc
+END
+datamismatchexception.h
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svnroot/pigoneandcode/!svn/ver/275/Template/Search/Linear_Programming/datamismatchexception.h
+END
+simplex.cc
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svnroot/pigoneandcode/!svn/ver/275/Template/Search/Linear_Programming/simplex.cc
+END
+sizemismatchexception.h
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svnroot/pigoneandcode/!svn/ver/275/Template/Search/Linear_Programming/sizemismatchexception.h
+END
+objectivefunction.h
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svnroot/pigoneandcode/!svn/ver/275/Template/Search/Linear_Programming/objectivefunction.h
+END
+simplex.h
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svnroot/pigoneandcode/!svn/ver/275/Template/Search/Linear_Programming/simplex.h
+END
+small.problem
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svnroot/pigoneandcode/!svn/ver/275/Template/Search/Linear_Programming/small.problem
+END
+constraint.cc
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svnroot/pigoneandcode/!svn/ver/275/Template/Search/Linear_Programming/constraint.cc
+END
+simplexexceptions.h
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svnroot/pigoneandcode/!svn/ver/275/Template/Search/Linear_Programming/simplexexceptions.h
+END
+variable.cc
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svnroot/pigoneandcode/!svn/ver/275/Template/Search/Linear_Programming/variable.cc
+END
+matrixissingularexception.h
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svnroot/pigoneandcode/!svn/ver/275/Template/Search/Linear_Programming/matrixissingularexception.h
+END
+constraint.h
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svnroot/pigoneandcode/!svn/ver/275/Template/Search/Linear_Programming/constraint.h
+END
+template.problem
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svnroot/pigoneandcode/!svn/ver/275/Template/Search/Linear_Programming/template.problem
+END
+matrixnotsquareexception.h
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svnroot/pigoneandcode/!svn/ver/275/Template/Search/Linear_Programming/matrixnotsquareexception.h
+END
+variable.h
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svnroot/pigoneandcode/!svn/ver/275/Template/Search/Linear_Programming/variable.h
+END
+test.problem
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svnroot/pigoneandcode/!svn/ver/275/Template/Search/Linear_Programming/test.problem
+END

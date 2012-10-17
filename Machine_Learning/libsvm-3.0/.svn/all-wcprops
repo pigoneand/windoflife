@@ -1,0 +1,83 @@
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svnroot/pigoneandcode/!svn/ver/275/Template/Machine_Learning/libsvm-3.0
+END
+svm-train.c
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svnroot/pigoneandcode/!svn/ver/275/Template/Machine_Learning/libsvm-3.0/svm-train.c
+END
+svm.def
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svnroot/pigoneandcode/!svn/ver/275/Template/Machine_Learning/libsvm-3.0/svm.def
+END
+guide.pdf
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svnroot/pigoneandcode/!svn/ver/275/Template/Machine_Learning/libsvm-3.0/guide.pdf
+END
+svm.cpp
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svnroot/pigoneandcode/!svn/ver/275/Template/Machine_Learning/libsvm-3.0/svm.cpp
+END
+COPYRIGHT
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svnroot/pigoneandcode/!svn/ver/275/Template/Machine_Learning/libsvm-3.0/COPYRIGHT
+END
+Makefile.win
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svnroot/pigoneandcode/!svn/ver/275/Template/Machine_Learning/libsvm-3.0/Makefile.win
+END
+FAQ.html
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svnroot/pigoneandcode/!svn/ver/275/Template/Machine_Learning/libsvm-3.0/FAQ.html
+END
+heart_scale
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svnroot/pigoneandcode/!svn/ver/275/Template/Machine_Learning/libsvm-3.0/heart_scale
+END
+svm.h
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svnroot/pigoneandcode/!svn/ver/275/Template/Machine_Learning/libsvm-3.0/svm.h
+END
+svm-scale.c
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svnroot/pigoneandcode/!svn/ver/275/Template/Machine_Learning/libsvm-3.0/svm-scale.c
+END
+README
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svnroot/pigoneandcode/!svn/ver/275/Template/Machine_Learning/libsvm-3.0/README
+END
+Makefile
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svnroot/pigoneandcode/!svn/ver/275/Template/Machine_Learning/libsvm-3.0/Makefile
+END
+svm-predict.c
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svnroot/pigoneandcode/!svn/ver/275/Template/Machine_Learning/libsvm-3.0/svm-predict.c
+END
