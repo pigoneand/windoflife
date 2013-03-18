@@ -1,0 +1,89 @@
+PROBLEM STATEMENT
+John has an array of n integers.
+Each pair of neighboring elements differs by at most d.
+The first and the last elements of the array are equal to first and last, respectively.
+
+
+Brus does not know John's array.
+He only knows n, d, first and last.
+He wants to compute the maximal possible element John might have in his array.
+
+
+You are given ints n, d, first and last.
+Return the maximal possible element the array might contain.
+
+
+DEFINITION
+Class:TheArray
+Method:find
+Parameters:int, int, int, int
+Returns:int
+Method signature:int find(int n, int d, int first, int last)
+
+
+NOTES
+-The constraints given below guarantee that there will always be at least one array that matches the values Brus knows.
+-For the constraints given below, the correct answer will always fit into an int.
+
+
+CONSTRAINTS
+-n will be between 2 and 1,000,000, inclusive.
+-d will be between 0 and 1000, inclusive.
+-first will be between -1000 and 1000, inclusive.
+-last will be between -1000 and 1000, inclusive.
+-|first - last| will be at most (n-1)*d.
+
+
+EXAMPLES
+
+0)
+3
+5
+2
+4
+
+Returns: 7
+
+Only the second element of the array is unknown.
+Its maximal valid value is 7.
+
+
+1)
+10
+100
+999
+100
+
+Returns: 999
+
+Due to the limitations, the first element is the largest element of the array.
+
+2)
+1000000
+0
+474
+474
+
+Returns: 474
+
+All elements of the array are equal.
+
+3)
+97
+53
+-92
+441
+
+Returns: 2717
+
+
+
+4)
+99
+3
+-743
+-619
+
+Returns: -535
+
+
