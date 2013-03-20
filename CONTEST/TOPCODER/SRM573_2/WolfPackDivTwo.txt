@@ -1,0 +1,104 @@
+PROBLEM STATEMENT
+Wolf Sothe is a member of the wolf pack called Grid Walkers.
+The N wolves in the pack are numbered 0 through N-1.
+(Wolf Sothe is the wolf number 0, but this does not matter.)
+
+
+At any moment, each wolf is located at some grid point in the plane.
+Multiple wolves may share the same grid point.
+For each i, the wolf number i is initially located at (x[i],y[i]).
+Then there are exactly m rounds in which the wolves move.
+In each round, each wolf must move from its current grid point to one of the four adjacent grid points.
+More precisely, the wolf located at (i,j) has to move to (i+1,j), (i-1,j), (i,j+1), or (i,j-1).
+
+
+The wolves have a goal: all of them have to be located at the same grid point after the m-th round.
+The grid point at which they all meet is not given - they can choose any grid point.
+
+
+You are given the vector <int>s x and y, and the int m.
+Count and return the number of ways in which the wolves can reach their goal, modulo 1,000,000,007.
+Two ways of reaching the goal are different if in some round the same wolf moves in a different direction.
+(Equivalently, two ways of reaching the goal are different if there is some number of rounds x and a wolf y such that the grid point of the wolf y after x rounds of the first way differs from the grid point of the wolf y after x rounds of the second way.)
+
+DEFINITION
+Class:WolfPackDivTwo
+Method:calc
+Parameters:vector <int>, vector <int>, int
+Returns:int
+Method signature:int calc(vector <int> x, vector <int> y, int m)
+
+
+CONSTRAINTS
+-x will contain between 2 and 50 elements, inclusive.
+-y will contain the same number of elements as x.
+-m will be between 1 and 50, inclusive.
+-Each element of x and y will be between 0 and 50, inclusive.
+-The points (x[i],y[i]) will be pairwise distinct.
+
+
+EXAMPLES
+
+0)
+{3,5}
+{0,0}
+1
+
+Returns: 1
+
+There are two wolves: one at (3,0) and the other at (5,0).
+There will be 1 round of movement.
+Thus, the meeting point has to be (4,0), wolf 0 has to move by (+1,0) and wolf 1 by (-1,0).
+This is the only way of reaching the goal.
+
+1)
+{0,1}
+{0,0}
+1
+
+Returns: 0
+
+In this case the two wolves cannot be at the same grid point at the end. Note that they both have to move.
+
+2)
+{0,2,4}
+{0,0,0}
+2
+
+Returns: 4
+
+In this case, the meeting point has to be (2,0).
+Wolf 0 has to go (0,0) -> (1,0) -> (2,0).
+Wolf 2 has to go (4,0) -> (3,0) -> (2,0).
+Wolf 1 has 4 possible ways of reaching the meeting point: in the first step he can choose any direction, and in the second step he will then choose the opposite direction.
+
+3)
+{7,8}
+{8,7}
+1
+
+Returns: 2
+
+This time there are two possible meeting points. For each of them there is a unique way in which the wolves can reach it.
+
+4)
+{0,0,0,0,0,0,0,0,0,0,2,2,2,2,2,2,2,2,2,2,4,4,4,4,4,4,4,4,4,4,6,6,6,6,6,6,6,6,6,6,8,8,8,8,8,8,8,8,8,8}
+
+{0,2,4,6,8,10,12,14,16,18,0,2,4,6,8,10,12,14,16,18,0,2,4,6,8,10,12,14,16,18,0,2,4,6,8,10,12,14,16,18,0,2,4,6,8,10,12,14,16,18}
+
+12
+
+Returns: 0
+
+
+
+5)
+{0,0,0,0,0,0,0,0,0,0,2,2,2,2,2,2,2,2,2,2,4,4,4,4,4,4,4,4,4,4,6,6,6,6,6,6,6,6,6,6,8,8,8,8,8,8,8,8,8,8}
+
+{0,2,4,6,8,10,12,14,16,18,0,2,4,6,8,10,12,14,16,18,0,2,4,6,8,10,12,14,16,18,0,2,4,6,8,10,12,14,16,18,0,2,4,6,8,10,12,14,16,18}
+
+31
+
+Returns: 573748580
+
+
