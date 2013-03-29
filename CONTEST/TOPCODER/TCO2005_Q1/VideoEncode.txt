@@ -1,0 +1,57 @@
+PROBLEM STATEMENT
+You would like to compress a video file to fit within a specified file size.  You are given the length of the video formatted as "HH:MM:SS" (quotes for clarity only), where HH, MM and SS are two-digit numbers specifying the number of hours, minutes and seconds, respectively.  You are also given the desired file size in megabytes.  Return the maximum bitrate in kbps (kilobits per second) at which you can encode the video without exceeding the desired size.  Please refer to the notes for information on conversion between different units.
+
+DEFINITION
+Class:VideoEncode
+Method:bitrate
+Parameters:string, int
+Returns:double
+Method signature:double bitrate(string length, int desiredSize)
+
+
+NOTES
+-The return value must have absolute or relative accuracy within 1e-9.
+-One megabyte is equivalent to 1,048,576 bytes.
+-One byte is equivalent to 8 bits.
+-One kilobit is equivalent to 1,000 bits.
+
+
+CONSTRAINTS
+-length is formatted as "HH:MM:SS", where HH is a two-digit integer between 00 and 20, inclusive, MM is a two-digit integer between 00 and 59, inclusive, and SS is a two-digit integer between 00 and 59, inclusive.
+-desiredSize is between 50 and 8000, inclusive.
+-length will represent a time of at least 1 second.
+
+
+EXAMPLES
+
+0)
+"00:00:01"
+50
+
+Returns: 419430.4
+
+This video is 1 second long.  To fit into a 50 megabyte file, it must be encoded at 419430.4 kbps.  50 megabytes is equivalent to 419430.4 kilobits.
+
+1)
+"20:59:59"
+8000
+
+Returns: 887.695128242437
+
+2)
+"02:00:00"
+4000
+
+Returns: 4660.337777777778
+
+3)
+"20:59:59"
+50
+
+Returns: 5.548094551515232
+
+4)
+"00:00:01"
+8000
+
+Returns: 6.7108864E7

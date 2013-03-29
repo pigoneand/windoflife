@@ -1,0 +1,64 @@
+PROBLEM STATEMENT
+In a simple game, two players take turns placing 'X's in a 4x4 grid.  Players may place 'X's in any available location ('.' in the input) that is not horizontally or vertically adjacent to another 'X'.  The player who places the last 'X' wins the game.  It is your turn and you want to know how many of the moves you could make guarantee you will win the game, assuming you play perfectly.
+
+DEFINITION
+Class:GridGame
+Method:winningMoves
+Parameters:vector <string>
+Returns:int
+Method signature:int winningMoves(vector <string> grid)
+
+
+CONSTRAINTS
+-grid will contain exactly 4 elements.
+-Each element of grid will contain 4 characters ('X's or '.'s), inclusive.
+-There will be no two horizontally or vertically adjacent 'X's in grid.
+
+
+EXAMPLES
+
+0)
+{"....",
+ "....",
+ "....",
+ "...."}
+
+Returns: 0
+
+You can't win this game.
+
+1)
+{"....",
+ "....",
+ ".X..",
+ "...."}
+
+Returns: 11
+
+Any legal move guarantees you win the game.
+
+2)
+{".X.X",
+ "..X.",
+ ".X..",
+ "...."}
+
+Returns: 1
+
+3)
+{".X.X",
+ "..X.",
+ "X..X",
+ "..X."}
+
+Returns: 0
+
+4)
+{"X..X",
+ "..X.",
+ ".X..",
+ "X..X"}
+
+Returns: 0
+
+There are no valid moves.
