@@ -1,0 +1,93 @@
+PROBLEM STATEMENT
+Each character in maze will be '.' or 'X' denoting a free
+square or an obstacle, respectively.  Starting on some free square, and moving
+exclusively through free squares, your goal is to leave the confines
+of the maze through its left edge.  Each move you make is either 'U', 'D', 'L', or
+'R' denoting up, down, left, and right respectively.  Moving upward
+decreases which element of maze you are in, while moving
+leftward decreases which character you are at in a particular
+element.  Nothing happens (your position does not change) if you move into an
+obstacle, or try to leave the maze other than leftward.  Similarly, nothing happens if you issue a move
+and you have already left the maze (you already won).
+
+Your friend has decided to challenge you by trying to solve the
+maze with the monitor off.  This means you do not know which
+position you have started in or if you have won.  
+Return the shortest sequence of moves that will solve
+the maze regardless of your initial position.  If there are multiple shortest solutions, return the one that occurs first lexicographically.
+If there is no solution, return an empty string.
+
+DEFINITION
+Class:BlindMazeSolve
+Method:getSolution
+Parameters:vector <string>
+Returns:string
+Method signature:string getSolution(vector <string> maze)
+
+
+CONSTRAINTS
+-maze contains between 1 and 5 elements, inclusive.
+-Each element of maze will contain between 1 and 4 characters, inclusive.
+-Each element of maze will contain the same number of characters.
+-Each character in maze will be '.' or 'X'.
+-maze will contain at least one '.'.
+
+
+EXAMPLES
+
+0)
+{".X"}
+
+Returns: "L"
+
+Left will win immediately, so we return "L".
+
+1)
+{
+"..",
+".."
+}
+
+Returns: "LL"
+
+Regardless of your initial position, moving left twice will result in winning.
+
+2)
+{
+"X..",
+"X..",
+"XXX"
+}
+
+Returns: ""
+
+No way to win here.
+
+3)
+{
+"X...",
+"XXX.",
+"X...",
+"X.XX",
+"..XX"
+}
+
+Returns: "RRDDLLDDLL"
+
+4)
+{".XX."}
+
+Returns: ""
+
+If you happen to be in the rightmost position, you cannot win.
+
+5)
+{
+"XXX.",
+"..X.",
+"X...",
+"XX..",
+"X..."
+}
+
+Returns: "DDDRULULULL"

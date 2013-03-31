@@ -1,0 +1,71 @@
+PROBLEM STATEMENT
+We need to know the k-th digit in x to the power y. A value of 0 for
+k means that the digit of interest is the rightmost digit, a value of 1 means 
+the digit next to the rightmost digit, etc.
+
+Create a class PowerDigit that contains a method digitK that is given x,
+y, and k and that returns the k-th digit (an integer in the range 0 to 9 inclusive)
+in x to the power y.
+If there is no k-th digit in x to the power y return -1.
+
+
+
+DEFINITION
+Class:PowerDigit
+Method:digitK
+Parameters:int, int, int
+Returns:int
+Method signature:int digitK(int x, int y, int k)
+
+
+CONSTRAINTS
+-x is between 0 and 10,000, inclusive.
+-y is between 1 and 10,000, inclusive.
+-k is between 0 and 4, inclusive.
+
+
+EXAMPLES
+
+0)
+2
+10
+1
+
+Returns: 2
+
+
+
+   2^10 = 1024 so the digit 1 is 2.
+
+
+
+1)
+2
+10
+4
+
+Returns: -1
+
+
+
+    1024 does not have a digit 4 (the 1 in 1024 is digit 3)
+
+2)
+2
+1000
+0
+
+Returns: 6
+
+
+
+   2^1000 is a very large number. But digit 0 is predictable since with 
+   succeeding powers it follows
+   the sequence 2, 4, 8, 6, 2, 4, 8, 6, 2, ....
+
+3)
+9999
+10000
+4
+
+Returns: 0

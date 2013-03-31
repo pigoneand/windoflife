@@ -1,0 +1,60 @@
+PROBLEM STATEMENT
+Given a positive integer j greater than 1, the corresponding Collatz
+sequence is produced by repeatedly applying f to j (and continues even after we reach 1).  The function f behaves as follows:
+
+             { x/2    if x is even
+   f(x)  =   {
+             { 3x+1   if x is odd
+
+Suppose someone began with the value y and has started (but not
+necessarily finished) generating the Collatz sequence.  Each time they
+apply f they write down 'E' or 'O' to denote whether the argument was even or odd,
+respectively.  Given the string s they have written down,
+you must return a String of the form (quotes for clarity) "ak+b".  Here a
+and b are integers with no extra leading zeros.  The returned string
+must make the following set the collection of all possible numbers
+that could have begun the sequence:
+
+	P = { ak + b | k >= 0 and ak + b > 1}
+
+If there are multiple possible return values, choose the one with b minimal.
+
+DEFINITION
+Class:InverseCollatz
+Method:getForm
+Parameters:string
+Returns:string
+Method signature:string getForm(string s)
+
+
+CONSTRAINTS
+-s will contain between 1 and 50 characters, inclusive.
+-Each character in s will be 'E' or 'O'.
+-An 'O' will never be immediately followed by another 'O' in s.
+
+
+EXAMPLES
+
+0)
+"EEE"
+
+Returns: "8k+0"
+
+The argument was even 3 times in a row, so the original value was a positive multiple of 8.
+
+1)
+"OE"
+
+Returns: "2k+1"
+
+The initial number had to be odd.  After multiplying by 3 and adding 1, the next value will definitely be even.
+
+2)
+"OEO"
+
+Returns: "4k+3"
+
+3)
+"EEEEOEEEEOEEEEOEEEEOEEEEOEEEEOEEEEOEEEEOEEEEOEEEEO"
+
+Returns: "2199023255552k+1014933810256"
