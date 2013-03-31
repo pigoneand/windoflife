@@ -1,0 +1,51 @@
+PROBLEM STATEMENT
+We can rotate a positive integer by removing its leftmost digit and attaching it on the right end.  Return the smallest positive value with no leading zeros such that rotating it is the same as multiplying it by p/q.  If no such value exists less than 2000000000 (2 billion), return -1.
+
+DEFINITION
+Class:FirstToLast
+Method:getSmallest
+Parameters:int, int
+Returns:int
+Method signature:int getSmallest(int p, int q)
+
+
+NOTES
+-After rotating, the number may have leading zeros.  
+-Rotating a value less than 10 does not change it.
+
+
+CONSTRAINTS
+-p and q will each be between 1 and 100 inclusive.
+
+
+EXAMPLES
+
+0)
+1
+1
+
+Returns: 1
+
+1)
+1
+4
+
+Returns: 102564
+
+2)
+1
+6
+
+Returns: -1
+
+3)
+1
+100
+
+Returns: 100
+
+4)
+92
+10
+
+Returns: -1

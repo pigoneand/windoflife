@@ -1,0 +1,98 @@
+PROBLEM STATEMENT
+You are analyzing a communications network with at most 18 nodes.
+Character j in element i (both 0-based) of mat denotes whether nodes i and j can communicate ('Y' for yes, 'N' for no).  Assuming a node cannot communicate with two nodes at once, return the maximum number of nodes that can communicate simultaneously.  
+
+DEFINITION
+Class:SeparateConnections
+Method:howMany
+Parameters:vector <string>
+Returns:int
+Method signature:int howMany(vector <string> mat)
+
+
+NOTES
+-If node S is communicating with node T then node T is communicating with node S.
+
+
+CONSTRAINTS
+-mat will contain between 1 and 18 elements inclusive.
+-Each element of mat will contain exactly N characters, where N is the number of elements in mat.
+-Each character in mat will be 'Y' or 'N'.
+-Character i of element i of mat will be 'N'.
+-Character i of element j will be the same as character j of element i.
+
+
+EXAMPLES
+
+0)
+{
+"NYYYY",
+"YNNNN",
+"YNNNN",
+"YNNNN",
+"YNNNN"
+}
+
+Returns: 2
+
+All communications must occur with node 0.  Since node 0 can only communicate with 1 node at a time, the returned value is 2.
+
+1)
+{
+"NYYYY",
+"YNNNN",
+"YNNNY",
+"YNNNY",
+"YNYYN"
+}
+
+Returns: 4
+
+In this setup, we can let node 0 communicate with node 1, and node 3 communicate with node 4.
+
+2)
+{
+"NNYYYYYYYYYYYYYYYY",
+"NNYYYYYYYYYYYYYYYY",
+"YYNNNNNNNNNNNNNNNN",
+"YYNNNNNNNNNNNNNNNN",
+"YYNNNNNNNNNNNNNNNN",
+"YYNNNNNNNNNNNNNNNN",
+"YYNNNNNNNNNNNNNNNN",
+"YYNNNNNNNNNNNNNNNN",
+"YYNNNNNNNNNNNNNNNN",
+"YYNNNNNNNNNNNNNNNN",
+"YYNNNNNNNNNNNNNNNN",
+"YYNNNNNNNNNNNNNNNN",
+"YYNNNNNNNNNNNNNNNN",
+"YYNNNNNNNNNNNNNNNN",
+"YYNNNNNNNNNNNNNNNN",
+"YYNNNNNNNNNNNNNNNN",
+"YYNNNNNNNNNNNNNNNN",
+"YYNNNNNNNNNNNNNNNN"
+}
+
+Returns: 4
+
+3)
+{
+"NNNNNNNNNYNNNNNYN",
+"NNNNNNNNNNNNNNNNN",
+"NNNNNNNYNNNNNNNNN",
+"NNNNNYNNNNNYNNYYY",
+"NNNNNNNNNNNNNNNYN",
+"NNNYNNNNNNNNNNYNN",
+"NNNNNNNNNYNNNNNNN",
+"NNYNNNNNNNNNNNNNN",
+"NNNNNNNNNYNNNNNNN",
+"YNNNNNYNYNNNNNNNY",
+"NNNNNNNNNNNNNNNNN",
+"NNNYNNNNNNNNNNNNN",
+"NNNNNNNNNNNNNNNNN",
+"NNNNNNNNNNNNNNNNN",
+"NNNYNYNNNNNNNNNNN",
+"YNNYYNNNNNNNNNNNN",
+"NNNYNNNNNYNNNNNNN"
+}
+
+Returns: 10

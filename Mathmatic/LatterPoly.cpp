@@ -10,12 +10,7 @@
 #include <algorithm>
 #include <queue>
 #include <cassert>
-#include <fstream>
 #include <sstream>
-#define debug1(x) cout << #x" = " << x << endl;
-#define debug2(x, y) cout << #x" = " << x << " " << #y" = " << y << endl;
-#define debug3(x, y, z) cout << #x" = " << x << " " << #y" = " << y << " " << #z" = " << z << endl;
-#define debug4(x, y, z, w) cout << #x" = " << x << " " << #y" = " << y << " " << #z" = " << z << " " << #w" = " << w << endl;
 using namespace std;
 
 vector<string> split(const string & src, vector<char> & delimit)
@@ -38,27 +33,27 @@ vector<string> split(const string & src, vector<char> & delimit)
 	return ret;
 }
 
-vector<string> split(const string & src, const string & delimit, 
-	const string &  null_subst = "")
-{    
-	if(src.empty() || delimit.empty()) 
+vector<string> split(const string & src, const string & delimit,
+		const string &  null_subst = "")
+{
+	if(src.empty() || delimit.empty())
 		return vector<string>();
 
-	vector<string> v; 
-	size_t deli_len = delimit.size();    
-	long index = string::npos, last_search_position = 0;    
-	while((index = src.find(delimit, last_search_position)) != string::npos)    
-	{    
-		if(index == last_search_position)    
-			v.push_back(null_subst);    
-		else   
-			v.push_back(src.substr(last_search_position , 
-			index - last_search_position));    
-		last_search_position = index + deli_len;    
-	}    
-	string last_one = src.substr(last_search_position);    
-	v.push_back(last_one.empty() ? null_subst : last_one);    
-	return v;    
+	vector<string> v;
+	size_t deli_len = delimit.size();
+	long index = string::npos, last_search_position = 0;
+	while((index = src.find(delimit, last_search_position)) != string::npos)
+	{
+		if(index == last_search_position)
+			v.push_back(null_subst);
+		else
+			v.push_back(src.substr(last_search_position ,
+						index - last_search_position));
+		last_search_position = index + deli_len;
+	}
+	string last_one = src.substr(last_search_position);
+	v.push_back(last_one.empty() ? null_subst : last_one);
+	return v;
 }
 
 long long gcd(long long a, long long b)
@@ -69,156 +64,152 @@ inline int getsign(long long x) { return x >= 0 ? 1 : -1; }
 // Ensure mother > 0
 class Fraction
 {
-public:
-	long long son;
-	long long mother;
+	public:
+		long long son;
+		long long mother;
 
-	void init(long long s, long long m) { son = s;	mother = m; reduction(); }
-	Fraction(long long s, long long m) { init(s, m); }
-	Fraction() { init(0, 1); }
-	Fraction(long long x) { init(x, 1); }
-	Fraction(int x) { init(x, 1); }
+		void init(long long s, long long m) { son = s;	mother = m; reduction(); }
+		Fraction(long long s, long long m) { init(s, m); }
+		Fraction() { init(0, 1); }
+		Fraction(long long x) { init(x, 1); }
+		Fraction(int x) { init(x, 1); }
 
-	Fraction & operator = (long long x) { init(x, 1); return *this;}
-	Fraction & operator = (int x) { init(x, 1); return *this; }
-	
+		Fraction & operator = (long long x) { init(x, 1); return *this;}
+		Fraction & operator = (int x) { init(x, 1); return *this; }
 
-	/** Format: intpart (space) son/mother */
-	Fraction(const string & line)
-	{
-		int t, s, m;
-		if (line.find(' ') == string::npos)
+		Fraction(const string & line)
 		{
-			if (line.find('/') != string::npos)
-			{		
-				sscanf(line.data(), "%d/%d", &s, &m);
-				init(s, m);
-				return;
+			int t, s, m;
+			if (line.find(' ') == string::npos)
+			{
+				if (line.find('/') != string::npos)
+				{
+					sscanf(line.data(), "%d/%d", &s, &m);
+					init(s, m);
+					return;
+				}
+				else
+				{
+					sscanf(line.data(), "%d", &s);
+					init(s, 1);
+					return;
+				}
 			}
 			else
 			{
-				sscanf(line.data(), "%d", &s);
-				init(s, 1);
+				sscanf(line.data(), "%d %d/%d", &t, &s, &m);
+				init(getsign(t) * (long long)s + (long long) t * (long long) m, m);
 				return;
 			}
 		}
-		else
-		{
-			sscanf(line.data(), "%d %d/%d", &t, &s, &m);
-			init(getsign(t) * (long long)s + (long long) t * (long long) m, m);
-			return;
-		}
-	}
 
-	void reduction()
-	{
-		if (mother < 0)
+		void reduction()
 		{
-			son = -son;
-			mother = -mother;
+			if (mother < 0)
+			{
+				son = -son;
+				mother = -mother;
+			}
+
+			long long factor = gcd(abs(son), mother);
+			son /= factor;
+			mother /= factor;
 		}
 
-		long long factor = gcd(abs(son), mother);
-		son /= factor;
-		mother /= factor;
-	}
+		Fraction operator + (const Fraction & other)
+		{
+			Fraction ret;
+			ret.son = son * other.mother + other.son * mother;
+			ret.mother = mother * other.mother;
+			ret.reduction();
+			return ret;
+		}
 
-	Fraction operator + (const Fraction & other)
-	{
-		Fraction ret;
-		ret.son = son * other.mother + other.son * mother;
-		ret.mother = mother * other.mother;
-		ret.reduction();
-		return ret;
-	}
+		Fraction operator - (const Fraction & other)
+		{
+			Fraction ret;
+			ret.son = son * other.mother - other.son * mother;
+			ret.mother = mother * other.mother;
+			ret.reduction();
+			return ret;
+		}
 
-	Fraction operator - (const Fraction & other)
-	{
-		Fraction ret;
-		ret.son = son * other.mother - other.son * mother;
-		ret.mother = mother * other.mother;
-		ret.reduction();
-		return ret;
-	}
+		Fraction operator * (const Fraction & other)
+		{
+			Fraction ret;
+			ret.son = son * other.son;
+			ret.mother = mother * other.mother;
+			ret.reduction();
+			return ret;
+		}
 
-	Fraction operator * (const Fraction & other)
-	{
-		Fraction ret;
-		ret.son = son * other.son;
-		ret.mother = mother * other.mother;
-		ret.reduction();
-		return ret;
-	}
+		Fraction operator / (const Fraction & other)
+		{
+			Fraction ret;
+			ret.son = son * other.mother;
+			ret.mother = mother * other.son;
+			ret.reduction();
+			return ret;
+		}
 
-	Fraction operator / (const Fraction & other)
-	{
-		Fraction ret;
-		ret.son = son * other.mother;
-		ret.mother = mother * other.son;
-		ret.reduction();
-		return ret;
-	}
+		Fraction operator - () const
+		{
+			Fraction ret;
+			ret.son = -son;
+			ret.mother = mother;
+			return ret;
+		}
 
-	Fraction operator - () const
-	{
-		Fraction ret;
-		ret.son = -son;
-		ret.mother = mother;
-		return ret;
-	}
+		bool operator < (const Fraction & other) const
+		{ return son * other.mother < mother * other.son; }
 
-	bool operator < (const Fraction & other) const
-	{ return son * other.mother < mother * other.son; }
+		bool operator > (const Fraction & other) const
+		{ return son * other.mother > mother * other.son; }
 
-	bool operator > (const Fraction & other) const
-	{ return son * other.mother > mother * other.son; }
+		bool operator == (const Fraction & other) const
+		{ return son == other.son && mother == other.mother; }
 
-	bool operator == (const Fraction & other) const
-	{ return son == other.son && mother == other.mother; }
+		bool operator != (const Fraction & other) const
+		{ return son != other.son || mother != other.mother; }
 
-	bool operator != (const Fraction & other) const
-	{ return son != other.son || mother != other.mother; }
+		friend ostream & operator << (ostream & out, const Fraction & other)
+		{
+			out << other.son << "/" << other.mother;
+			return out;
+		}
 
-	friend ostream & operator << (ostream & out, const Fraction & other)
-	{
-		out << other.son << "/" << other.mother;
-		return out;
-	}
-
-	string toIntPartString()
-	{
-		ostringstream ostr;
-		if (son == 0) return "0";
-		if (mother == 1) 	{ ostr << son;	return ostr.str(); }
-		if (abs(son) < mother) 	{	ostr << son << "/" << mother;	return ostr.str(); }
-		ostr << son / mother << " " << abs(son) % mother << "/" << mother;
-		return ostr.str();
-	}
+		string toIntPartString()
+		{
+			ostringstream ostr;
+			if (son == 0) return "0";
+			if (mother == 1) 	{ ostr << son;	return ostr.str(); }
+			if (abs(son) < mother) 	{	ostr << son << "/" << mother;	return ostr.str(); }
+			ostr << son / mother << " " << abs(son) % mother << "/" << mother;
+			return ostr.str();
+		}
 };
 
-
-struct Term
+struct OneItem
 {
 	map<char, int> powers;
 	Fraction coff;
 	int totalpower;
 
-	Term()
+	OneItem()
 	{
 		totalpower = 0;
 		coff = 0;
 		powers.clear();
 	}
 
-	Term(Fraction x)
+	OneItem(Fraction x)
 	{
 		totalpower = 0;
 		coff = x;
 		powers.clear();
 	}
 
-	// no space 
-	Term(string & str)
+	OneItem(string & str)
 	{
 		coff = 1;
 		totalpower = 0;
@@ -244,23 +235,23 @@ struct Term
 		refine();
 	}
 
-	Term operator * (Term & other)
+	OneItem operator * (OneItem & other)
 	{
-		Term ret = (*this);
+		OneItem ret = (*this);
 		ret.coff = ret.coff * other.coff;
 		for (map<char, int>::iterator itr = other.powers.begin(); itr != other.powers.end(); ++itr)
 			ret.powers[itr->first] += itr->second, ret.totalpower += itr->second;
 		return ret;
 	}
 
-	Term operator - () const
+	OneItem operator - () const
 	{
-		Term ret = *this;
+		OneItem ret = *this;
 		ret.coff = -ret.coff;
 		return ret;
 	}
 
-	bool match(Term & other)
+	bool match(OneItem & other)
 	{
 		if (totalpower != other.totalpower) return false;
 		for (map<char, int>::iterator itr = other.powers.begin(); itr != other.powers.end(); ++itr)
@@ -273,14 +264,14 @@ struct Term
 
 	void refine()
 	{
-		if (coff == 0) 
+		if (coff == 0)
 		{
 			powers.clear();
 			totalpower = 0;
 		}
 	}
 
-	bool operator < (const Term & other) const
+	bool operator < (const OneItem & other) const
 	{
 		if (totalpower > other.totalpower) return true;
 		if (totalpower < other.totalpower) return false;
@@ -297,11 +288,11 @@ struct Term
 		return false;
 	}
 
-	friend ostream & operator << (ostream & out, const Term & term)
+	friend ostream & operator << (ostream & out, const OneItem & term)
 	{
 		if (term.coff == 0) { out << 0; return out; }
 		bool leadCoff = false;
-		if (term.coff > 0) 
+		if (term.coff > 0)
 		{
 			out << "+ ";
 			if (term.coff != 1 || term.totalpower == 0) {out << term.coff; leadCoff = true; }
@@ -316,7 +307,7 @@ struct Term
 		{
 			if (itr != term.powers.begin() || leadCoff) out << "*";
 			out << itr->first;
-			if (itr->second > 1) 
+			if (itr->second > 1)
 				out << "^" << itr->second;
 		}
 		return out;
@@ -325,7 +316,7 @@ struct Term
 
 struct Polynomial
 {
-	vector<Term> terms;
+	vector<OneItem> terms;
 
 	Polynomial operator * (Polynomial & other)
 	{
@@ -347,7 +338,7 @@ struct Polynomial
 	}
 
 	Polynomial operator - (Polynomial & other)
-	{	
+	{
 		Polynomial ret = (*this);
 		for (int j = 0; j < other.terms.size(); ++j)
 			ret.terms.push_back(-(other.terms[j]));
@@ -376,15 +367,15 @@ struct Polynomial
 					if (terms[i].match(terms[j]) && valid[j])
 						terms[i].coff = terms[i].coff + terms[j].coff, valid[j] = false;
 
-		vector<Term> newterm;
+		vector<OneItem> newterm;
 		for (int i = 0; i < terms.size(); ++i)
-			if (valid[i] && terms[i].coff != 0) 
+			if (valid[i] && terms[i].coff != 0)
 				newterm.push_back(terms[i]);
 		sort(newterm.begin(), newterm.end());
 		terms = newterm;
 	}
 
-	friend ostream & operator << (ostream & out, const Polynomial & poly) 
+	friend ostream & operator << (ostream & out, const Polynomial & poly)
 	{
 		if (poly.terms.size() == 0) { out << 0; return out; }
 		for (int i = 0; i < poly.terms.size(); ++i)
@@ -401,13 +392,13 @@ struct Polynomial
 			if (str[i] == '+' || str[i] == '-')
 			{
 				if (now.length() > 0)
-					terms.push_back(Term(now));
+					terms.push_back(OneItem(now));
 				now = string(1, str[i]);
 			}
 			else now.append(1, str[i]);
 		}
-		if (now.length() > 0) 
-			terms.push_back(Term(now));
+		if (now.length() > 0)
+			terms.push_back(OneItem(now));
 	}
 
 	Polynomial()
