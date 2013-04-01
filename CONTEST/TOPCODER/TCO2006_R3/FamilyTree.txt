@@ -1,0 +1,91 @@
+PROBLEM STATEMENT
+We are keeping a family tree. We update the data by adding information as it 
+becomes available. When information arrives that is not
+consistent with the previous data, we need to recognize that fact immediately.
+We will enforce only the most obvious rules:
+    A person is either male or female.
+    A child's parent cannot be the child itself or a descendant of the child 
+    A child has two parents, one male and the other female.  
+
+(A person is a descendant only of his parents, grandparents, greatgrandparents,
+etc.)
+
+Each piece of data gives either the names of a child and parent or the name of
+a person and that person's gender. All occurrences of a name represent the same person. 
+Create a class FamilyTree that contains a method firstBad that is given a
+vector <string> data. The method returns the (0-based) index of the first element of data that is inconsistent
+with the previous elements of data, or returns -1 if all the data is consistent.
+
+Each element of data will be formatted in one of these two forms:
+      "childname parentname"
+      "name gender" 
+where the two parts are separated by a single space character, each name is all
+uppercase letters 'A'-'Z' and gender is a single lowercase letter, either 'm' or 'f'.
+
+
+DEFINITION
+Class:FamilyTree
+Method:firstBad
+Parameters:vector <string>
+Returns:int
+Method signature:int firstBad(vector <string> data)
+
+
+CONSTRAINTS
+-data will contain between 1 and 50 elements, inclusive.
+-Each element of data will be formatted as above.
+-Each element of data will contain between 3 and 50 characters, inclusive.
+
+
+EXAMPLES
+
+0)
+{"BOB JOHN","BOB JOHN","BOB MARY","BOB m","AL f"}
+
+Returns: -1
+
+
+
+   Repeated data elements just give us more confidence. This data is all
+   consistent. BOB's 2 parents are JOHN and MARY (it is not
+   yet known which is the father and which is the mother), and BOB is male. We 
+   also know that AL is female.
+
+
+
+1)
+{"BOB JOHN","BOB MARY","MARY JOHN","JOHN f","MARY f","AL f"}
+
+Returns: 4
+
+
+   The first 4 elements are considered consistent. They describe that BOB's 2
+   parents are JOHN and MARY and that (unconventionally) MARY is JOHN's child.
+   JOHN is female. But "MARY f" is inconsistent with this since that makes
+   both of BOB's parents female.
+
+2)
+{"BOB JOHN", "CARLA BOB", "JOHN CARLA"}
+
+Returns: 2
+
+
+   After the first 2 elements we know that CARLA is a descendant of JOHN, so
+   "JOHN CARLA" cannot be added.
+
+3)
+{"BOB RICK", "AL RICK", "AL PAULA", "PAULA LINUS", "LINUS BOB","BOB PAULA"}
+
+Returns: 5
+
+
+    The first 5 elements are consistent. BOB's descendant AL was a child of 
+    RICK and PAULA, and RICK is BOB's parent. His other parent could not be 
+    PAULA since PAULA is his descendant so the final element is the first one
+    that is inconsistent.
+
+
+4)
+{"JOHN f", "JOHN m"}
+
+Returns: 1

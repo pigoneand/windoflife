@@ -1,0 +1,57 @@
+PROBLEM STATEMENT
+
+Bob and Sally play the following game. At the beginning of the game several stones lie in a box. The two players take stones in turns, and the player who takes the last stone wins.
+On each turn, a player may take T stones for any T in turns. For each number k between m and n, inclusive, the game is played once with the box containing k stones at the start of the game.
+Assuming both players play optimally, return how many times Bob will win (Bob always moves first).
+ 
+
+DEFINITION
+Class:LastStone
+Method:numWins
+Parameters:vector <int>, int, int
+Returns:int
+Method signature:int numWins(vector <int> turns, int m, int n)
+
+
+CONSTRAINTS
+-turns will contain between 1 and 50 elements, inclusive.
+-Each element of turns will be between 1 and 100, inclusive.
+-Elements of turns will be in strictly ascending order.
+-The first element of turns will be 1.
+-n will be between 1 and 100000, inclusive.
+-m will be between 1 and n, inclusive.
+
+
+EXAMPLES
+
+0)
+{1, 3, 4}
+1
+5
+
+Returns: 4
+
+If the box contains 1, 3 or 4 stones, Bob wins by taking them all on his first turn. 
+If the box contains 2 stones, Bob is forced to take 1 stone, and Sally wins by taking the other one. 
+If the box contains 5 stones, Bob takes 3 stones (leaving 2 stones in the box) and wins the game on his next turn.
+
+1)
+{1}
+1
+100
+
+Returns: 50
+
+2)
+{1,2,3,4,5,6,7,8,9,10}
+1
+10
+
+Returns: 10
+
+3)
+{1, 2, 3}
+1
+8
+
+Returns: 6

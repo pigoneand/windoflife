@@ -1,0 +1,61 @@
+PROBLEM STATEMENT
+You would like to return home from a party as soon as possible by taking a bus.  You are currently standing at a bus stop that is serviced by several different routes.  Each bus route takes a different amount of time to take you home, so it's not always optimal to take the first bus you see.  Sometimes it's better to skip a bus and wait for a bus from another route.  Fortunately for you, each route has a fixed time interval between consecutive buses arriving at this stop.  You also know the time it takes each route to get you back home.  Unfortunately, you have no idea when any of the previous buses were at this stop, so you don't know how long it will take for the next bus to arrive.
+
+
+You will be given two vector <int>s - tripTime and waitTime, with the ith elements of tripTime and waitTime describing the ith route. The ith element of tripTime represents the time it takes to get home using the ith route, and the ith element of waitTime gives you the exact time interval between two consecutive buses of this route.
+This means you'll need to wait an integer number of minutes between 0 and (waitTime[i] - 1), inclusive, until the next bus of the ith route arrives.  Each of these intervals is equally probable.
+
+
+Return the minimal expected time you'll need to get home if your behavior is optimal. That is, at each moment you try to minimize the expected time using all the information about buses you have.
+
+
+DEFINITION
+Class:TakeBus
+Method:expectedTime
+Parameters:vector <int>, vector <int>
+Returns:double
+Method signature:double expectedTime(vector <int> tripTime, vector <int> waitTime)
+
+
+NOTES
+-The returned value must be accurate to within a relative or absolute value of 1E-9.
+
+
+CONSTRAINTS
+-tripTime and waitTime will contain the same number of elements.
+-tripTime and waitTime will each contain between 1 and 50 elements, inclusive.
+-Each element of tripTime will be between 1 and 100, inclusive.
+-Each element of waitTime will be between 1 and 100, inclusive.
+
+
+EXAMPLES
+
+0)
+{5}
+{2}
+
+Returns: 5.5
+
+Here the bus will come either immediately or in 1 minute, giving us an average wait time of 0.5 minutes. We spend another 5 minutes to get home.
+
+1)
+{100, 5}
+{1, 10}
+
+Returns: 9.5
+
+Here the first bus is extremely slow, so we prefer to wait for the second.
+
+2)
+{6, 5}
+{1, 10}
+
+Returns: 5.9
+
+We take the second bus only if it comes to the stop immediately. If it doesn't, we immediately take the first one.
+
+3)
+{100, 100, 100}
+{3, 3, 3}
+
+Returns: 100.33333333333333
