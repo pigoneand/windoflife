@@ -1,0 +1,109 @@
+PROBLEM STATEMENT
+A tree is a connected graph with no cycles.  
+Starting from a connected tree with positive integral edge lengths, we take a subset of the nodes of that tree.  Next, we compute the lengths of the shortest paths between all pairs of nodes in the subset (in the original tree).  This gives us a symmetric N*N distance matrix where N is the number of nodes in the subset.
+Your task is to reverse this process.  Given a N*N distance matrix, you are to reconstruct a tree, if possible.  Since there may be many reconstructions, you should return the minimum number of nodes in any reconstruction that agrees with the distance matrix (this will be at least N).  If no reconstruction is possible, return -1.
+The distance between nodes i and j (indexed from 0) can be found by treating g1[i][j] and g2[i][j] as hexadecimal digits.  Putting the two digits together gives the distance (g1 has the more significant digits).
+
+DEFINITION
+Class:TreeReconstruct
+Method:reconstruct
+Parameters:vector <string>, vector <string>
+Returns:int
+Method signature:int reconstruct(vector <string> g1, vector <string> g2)
+
+
+CONSTRAINTS
+-g1 and g2 will each contain exactly N elements, where N is between 2 and 50, inclusive.
+-Each element of g1 and g2 will contain exactly N hex digits ('0'-'9' and 'A'-'F').
+-The distance between each pair of distinct nodes will be positive.
+-The diagonal entries of g1 and g2 will be '0'.
+-g1 and g2 will each be symmetric.
+
+
+EXAMPLES
+
+0)
+{"0000",
+ "0000",
+ "0000",
+ "0000"}
+
+{"0444",
+ "4044",
+ "4404",
+ "4440"}
+
+Returns: 5
+
+The original tree could have been a star: one central node, with 4 nodes connected to it, each by an edge of length 2.  The subset of selected nodes are the 4 non-central nodes.
+
+1)
+{"0000",
+ "0000",
+ "0000",
+ "0000"}
+
+{"0233",
+ "2033",
+ "3302",
+ "3320"}
+
+Returns: 6
+
+2)
+{"00001",
+ "00001",
+ "00011",
+ "00100",
+ "11100"}
+
+{"066C6",
+ "60CA4",
+ "6C02C",
+ "CA20A",
+ "64CA0"}
+
+
+Returns: 6
+
+3)
+{"00000",
+ "00000",
+ "00001",
+ "00000",
+ "00100"}
+{"06839",
+ "60E7B",
+ "8E0B1",
+ "37B0A",
+ "9B1A0"}
+
+Returns: 7
+
+4)
+{"023825",
+ "202704",
+ "320633",
+ "876084",
+ "203805",
+ "543450"}
+{"0198AA",
+ "10ED9F",
+ "9E0D7F",
+ "8DD06E",
+ "A97608",
+ "AFFE80"}
+
+Returns: 9
+
+5)
+{"0000",
+ "0000",
+ "0000",
+ "0000"}
+{"0121",
+ "1012",
+ "2101",
+ "1210"}
+
+Returns: -1

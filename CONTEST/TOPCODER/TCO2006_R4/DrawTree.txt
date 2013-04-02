@@ -1,0 +1,64 @@
+PROBLEM STATEMENT
+Given a tree, you are to return a representation of that tree as a vector <string>.  The tree will be specified by a vector <int>, where element i gives the index of the parent of node i (indexed from 0).  Exactly one element of this vector <int> will be -1, corresponding to the root of the tree.  Element i of the vector <int> corresponds to element i of names, which gives the name of node i.  
+The vector <string> you return should have the root on the first line.  Following the root, add elements to the return one subtree at a time.  The subtrees should be sorted by the indices of their roots and drawn in the same way as the whole tree.  However, the root of each subtree should be indented two more characters than its parent.  After indenting, each node should be indicated by a plus '+', a minus '-', and then the name of the node from names.  The plusses of siblings should be connected by vertical pipes '|' as shown in the examples.  For example, the tree given by the input:
+parents = {-1,0,1,1,0,0,5,5}
+names = {"Root","SubB","LEAF1","LEAF2","LEAF3","SubA","LEAF4","LEAF5"}
+would result in the following return.
+
++-Root
+  +-SubB
+  | +-LEAF1
+  | +-LEAF2
+  +-LEAF3
+  +-SubA
+    +-LEAF4
+    +-LEAF5
+
+See the examples for more illustrations of exactly how this works.
+
+DEFINITION
+Class:DrawTree
+Method:draw
+Parameters:vector <int>, vector <string>
+Returns:vector <string>
+Method signature:vector <string> draw(vector <int> parents, vector <string> names)
+
+
+CONSTRAINTS
+-parents will represent a tree: exactly one element will be -1, there will be no cycles, and all but one of the entries will refer to other elements of parents.
+-parents will contain between 1 and 50 elements, inclusive.
+-parents and names will contain the same number of elements.
+-Each element of names will contain between 1 and 50 letters ('a'-'z' and 'A'-'Z'), and digits ('0'-'9').
+
+
+EXAMPLES
+
+0)
+{-1,0,1,1,0,0,5,5}
+{"Root","SubB","LEAF1","LEAF2","LEAF3","SubA","LEAF4","LEAF5"}
+
+Returns: {"+-Root", "  +-SubB", "  | +-LEAF1", "  | +-LEAF2", "  +-LEAF3", "  +-SubA", "    +-LEAF4", "    +-LEAF5" }
+
+1)
+{1,2,3,4,5,6,-1}
+{"A","B","C","D","E","F","G"}
+
+Returns: {"+-G", "  +-F", "    +-E", "      +-D", "        +-C", "          +-B", "            +-A" }
+
+2)
+{1,2,3,4,6,6,-1}
+{"A","B","C","D","E","F","G"}
+
+Returns: {"+-G", "  +-E", "  | +-D", "  |   +-C", "  |     +-B", "  |       +-A", "  +-F" }
+
+3)
+{6,2,3,4,5,6,-1}
+{"A","B","C","D","E","F","G"}
+
+Returns: {"+-G", "  +-A", "  +-F", "    +-E", "      +-D", "        +-C", "          +-B" }
+
+4)
+{-1,0,1,1,2,2,3,3,0,8,8,9,9,10,10}
+{"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O"}
+
+Returns: {"+-A", "  +-B", "  | +-C", "  | | +-E", "  | | +-F", "  | +-D", "  |   +-G", "  |   +-H", "  +-I", "    +-J", "    | +-L", "    | +-M", "    +-K", "      +-N", "      +-O" }

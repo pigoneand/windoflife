@@ -1,0 +1,47 @@
+PROBLEM STATEMENT
+Given a sequence of bits (0's and 1's), we want to find an arbitrary monotonically increasing curve that best fits the bits.  That is, the ith bit is b(i), and we want to find some curve, f, such that for x<y, f(x) <= f(y), and the sum over i of (f(i)-b(i))2 (the squared error) is minimized.
+Given the sequence of bits as a vector <string> where you concatenate all the elements together, return the minimum possible squared error.
+
+DEFINITION
+Class:MonotoneSEMin
+Method:min
+Parameters:vector <string>
+Returns:double
+Method signature:double min(vector <string> bits)
+
+
+NOTES
+-Your return must have relative or absolute error less than 1e-9.
+
+
+CONSTRAINTS
+-bits will contain between 1 and 50 elements, inclusive.
+-Each element of bits will contain between 1 and 50 bits ('0' or '1'), inclusive.
+
+
+EXAMPLES
+
+0)
+{"10001110"}
+
+Returns: 1.5
+
+The flat curve f(x) = 0.5 would give a squared error of 0.52*8 = 2.  Naturally, we can do better than this though, and it turns out that the best we can do is a squared error of 1.5.
+
+1)
+{"00"}
+
+Returns: 0.0
+
+2)
+{"11"}
+
+Returns: 0.0
+
+3)
+{"1010100101010101001010101001",
+ "0101010100100010010001010101",
+ "1110110101001011010111011011",
+ "1010111101110110111000111100"}
+
+Returns: 26.244842801985662
