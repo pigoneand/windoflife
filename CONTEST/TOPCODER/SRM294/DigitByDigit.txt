@@ -1,0 +1,89 @@
+PROBLEM STATEMENT
+
+You have reached the final round of a game show, and it is time to determine the amount of your prize.
+The number of digits, n, in the amount has been determined based on your earlier performance during the game.
+You will be presented with a board containing n blank spaces and given n randomly-generated digits.
+You will be allowed to place each digit, one at a time, in any unoccupied space you want.
+You must decide where to place each digit before you see the next, and once you place a digit you
+cannot move it.
+After all n digits have been placed, the resulting n-digit number will be the value of your prize.
+
+
+For example, assume you have earned a three-digit prize.
+If the first digit generated were a 2, you might choose to place that in the rightmost space,
+hoping that the next two digits will be larger.
+If the second digit were a 8, you might choose to place that in the leftmost space,
+because you would only regret that decision in the relatively unlikely event that the final digit is a 9.
+If the third digit were a 6, you would place that in the last remaining space (the middle), and your
+final prize would be 862.
+
+
+You will be given the state of the number you are forming digit-by-digit as a string digits,
+possibly already in progress.
+This string will contain one character for each space on the board: '0' through '9', inclusive, indicate digits that have already been placed, and a '_' indicates a blank space on the board.
+Assuming you play optimally in order to maximize your expected winnings, return the expected value of the prize you will win.
+
+
+At each step, each of the digits 0 through 9 will be presented to you with equal probability.
+Note that the digits already placed may not be the result of optimal play, but you should assume that
+you will play to maximize your expected winnings from this point forward.
+
+
+
+DEFINITION
+Class:DigitByDigit
+Method:expectedScore
+Parameters:string
+Returns:double
+Method signature:double expectedScore(string digits)
+
+
+NOTES
+-Your return value must have an absolute or relative error less than 1e-9.
+
+
+CONSTRAINTS
+-digits will contain between 1 and 50 characters, inclusive.
+-digits will contain only the characters '_' and '0' through '9', inclusive.
+
+
+EXAMPLES
+
+0)
+"_0"
+
+Returns: 45.0
+
+There is only one blank space, so you will only have one more digit to place.  The final result will either be 0, 10, 20, 30, 40, 50, 60, 70, 80, or 90.  The expected value, 45, is the average of these.
+
+1)
+"__"
+
+Returns: 60.75
+
+The highest expected value is achieved by putting the first digit in the left spot if it is 5, 6, 7, 8, or 9, and putting it in the right spot if it is 0, 1, 2, 3, or 4.  The expected value can be computed as:
+
+    5/10 * ((5+6+7+8+9)/5 * 10 + 4.5          ) +
+    5/10 * (4.5           * 10 + (0+1+2+3+4)/5)
+
+Any deviation from this strategy would result in a lower expected value.
+
+2)
+"_55_"
+
+Returns: 6303.25
+
+3)
+"____0000000000000000"
+
+Returns: 7.482735000000001E19
+
+4)
+"___6__3___"
+
+Returns: 8.604871517066002E9
+
+5)
+"__________"
+
+Returns: 8.882477600592714E9

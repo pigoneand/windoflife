@@ -1,0 +1,75 @@
+PROBLEM STATEMENT
+
+Before shuffling a deck of cards, you notice that the card on the bottom of the deck is an ace.
+Thinking that it may be advantageous to know where this ace ends up, you decide to keep track of its position in the deck while shuffling.
+
+
+
+The shuffles will be given as a list of integers.
+A shuffle characterized by a positive integer, n, is performed as follows.  The deck is split into two halves of equal size, a top half and a bottom half.  n cards are dropped (in order) from the bottom of the bottom half of the deck.  Then, starting with the top half, cards are dropped one at a time from the bottom of each half, alternating between halves of the deck, until every card in the bottom half has been dropped.  At this point, there are n cards remaining in the top half of the deck, which are dropped in order.
+
+
+
+A shuffle characterized by a negative integer is performed similarly, with the bottom and top halves of the deck reversed.
+
+
+
+The following figures depict shuffles with values of 3 and -4, respectively, of a 12-card deck:
+
+
+
+
+
+
+
+Given cards, the number of cards in the deck, and shuffles, a vector <int> characterizing each of the shuffles you perform, return the final position of the ace.  (A value of 0 indicates the bottom of the deck, and a value of cards-1 indicates the top of the deck.)
+
+
+DEFINITION
+Class:Shuffling
+Method:position
+Parameters:int, vector <int>
+Returns:int
+Method signature:int position(int cards, vector <int> shuffles)
+
+
+CONSTRAINTS
+-cards must be between 2 and 100, inclusive.
+-cards must be even.
+-shuffles must contain between 0 and 50 elements, inclusive.
+-The absolute value of each element of shuffles must be between 1 and cards/2, inclusive.
+
+
+EXAMPLES
+
+0)
+10
+{ -2 }
+
+Returns: 2
+
+1)
+52
+{ 1, 17, 12, 26, 9 }
+
+Returns: 0
+
+If all elements of shuffles are positive, then the bottom card remains at the bottom.
+
+2)
+10
+{ -1, -1, -1, -1, -1, -1, -1, -1, -1 }
+
+Returns: 5
+
+3)
+100
+{ -50 }
+
+Returns: 50
+
+4)
+100
+{ -48, -49, -2, 10 }
+
+Returns: 95
