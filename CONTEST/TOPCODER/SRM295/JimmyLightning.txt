@@ -1,0 +1,64 @@
+PROBLEM STATEMENT
+Jimmy "The Lightning" Alberto is a well known (and successful too!) bank robber. For his next job he has asked for your help. There is a substantial fee involved so it is worth the risk. Jimmy is faced with the following problem: 
+
+The bank he is breaking into is a long numbered sequence of rooms, one after another, starting with room 1, with security doors in between. Note that there is also a security door on the entrance to the first room. The security system will detect when Jimmy enters the bank and will start to autoclose the doors. Each door has a preprogrammed close time, measured in seconds after Jimmy's entry into room 1. Each room may contain several types of diamonds Jimmy can steal. However each individual diamond is heavily protected, so Jimmy needs some time to steal it. Jimmy "The Lightning" moves lightning fast so the time he requires to move from one room to another is ignored but Jimmy must leave the room strictly before the moment the door will close. In other words, if he requires 5 seconds to steal a diamond and the door closes in 5 seconds, he can't steal it. You can assume that there is an infinite supply of diamonds. Of course not all diamond types are equally valuable.
+
+
+
+This layout represents a bank consisting of 3 rooms (white squares) and 3 security doors (red squares). Please note that the only entrance and exit for the bank is in room 1. Consequently Jimmy must enter and leave the bank through room 1.
+
+You will be given a vector <int> doors, the preprogrammed closing times of all doors in seconds (the element with index i corresponds to room i+1, where i is a 0-based index), and vector <string> diamonds containing the description of diamond types in the following format: "VALUE THEFT_TIME ROOM_NUMBER" so "10 5 2" represents diamonds with value 10 in room 2 for which Jimmy needs 5 seconds per diamond to steal. You need to return the maximum value Jimmy can steal without being trapped inside the bank.
+
+DEFINITION
+Class:JimmyLightning
+Method:robTheBank
+Parameters:vector <int>, vector <string>
+Returns:int
+Method signature:int robTheBank(vector <int> doors, vector <string> diamonds)
+
+
+NOTES
+-All the doors are initially open.
+
+
+CONSTRAINTS
+-doors will contain between 1 and 50 elements, inclusive.
+-Each element of doors will be between 1 and 1000, inclusive.
+-diamonds will contain between 0 and 50 elements, inclusive.
+-Each element of diamonds will be formatted as "V T R" (quotes for clarity only), where V, T, and R are integers with no leading zeros.
+-Each V and T in diamonds will be between 1 and 999, inclusive.
+-Each R in diamonds will be between 1 and N, inclusive, where N is the number of elements in doors.
+-No element of diamonds will contain leading or trailing spaces.
+
+
+EXAMPLES
+
+0)
+{6}
+{"2 1 1"}
+
+Returns: 10
+
+Only one room. Jimmy can steal 5 diamonds and escape. If he tries to steal 6, then the door will close at the exact same moment he is ready to leave.
+
+1)
+{1}
+{"999 1 1"}
+
+Returns: 0
+
+This bank is a smart choice to put the diamonds in. Jimmy can't steal a single diamond.
+
+2)
+{10, 5, 2}
+{"1 1 1",
+ "2 1 2",
+ "3 1 3"}
+
+Returns: 14
+
+This is the bank layout from the problem statement.
+Steal the diamonds in the following order:
+ 3 2 2 2 1 1 1 1 1 
+It takes 9 seconds and the total value stolen is 14.
+

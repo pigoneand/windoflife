@@ -1,0 +1,85 @@
+PROBLEM STATEMENT
+We have decided to make a funnier programming language, and name it "Tribblo". The basic objects of the new programming language will be tiny two dimensional creatures called Tribbles. The way tribbles interact with their world will determine the flow of a program. For starters, only 5 objects that tribbles can interact with are defined.
+
+	 'S' represents a spawning point. The program starts by summoning one tribble at this point. The tribble then begins moving in one of the four cardinal directions (up, down, left or right). The direction is chosen randomly and each direction has the same chance of being chosen (25%). If at any point during the program the tribble returns to the spawning point the tribble is destroyed causing the program to enter an infinite loop and never terminate. 
+	 A slash-router '/' (quotes for clarity) works like a mirror. When a tribble hits a slash-router, it will rotate 90 degrees and continue moving. If the tribble was originally moving left or right, it will rotate 90 degrees counterclockwise, and if it was originally moving up or down, it will rotate 90 degrees clockwise.
+	 A backslash-router '\' (quotes for clarity) works similarly to the slash-router, but in the opposite direction. If the tribble was originally moving left or right, it will rotate 90 degrees clockwise, and if it was originally moving up or down, it will rotate 90 degrees counterclockwise.
+	For example if the code looks like this:
+		...\..
+		......
+		S../..
+	a tribble that starts off going to the right moves like this:
+		ttt\..
+		...t..
+		Stt/..
+	 There is also a wherever machine 'W'.  When a tribble hits this object, it will rotate 90 degrees either clockwise or counterclockwise (both possibilities are equally likely).  For example, a tribble going left and hitting the machine has a 50% chance of going up and a 50% chance of going down. There will be at most 10 wherever machines.
+	 The final object is the tribble-trouble object 'T'.  If any tribble reaches a tribble-trouble object, the program terminates.
+
+
+The tribblo world is a N*M matrix of characters, with empty squares represented as '.'. If a tribble exits the boundaries of the world, he falls off, causing the program to enter an infinite loop and never terminate.
+
+You will be given a vector <string> code containing a properly formatted Tribblo program. You need to determine the probability of the given Tribblo program terminating.
+
+
+
+
+DEFINITION
+Class:TribbloTrouble
+Method:terminates
+Parameters:vector <string>
+Returns:double
+Method signature:double terminates(vector <string> code)
+
+
+NOTES
+-The returned value must be accurate to within a relative or absolute value of 1E-9.
+
+
+CONSTRAINTS
+-code will contain between 1 and 50 elements, inclusive.
+-Each element of code will contain between 1 and 50 characters, inclusive.
+-All elements of code will contain the same number of characters.
+-All elements of code will contain only 'S','T','/','\','W' or '.' characters.
+-There will be at most 10 'W' characters in code.
+-There will be exactly one 'S' character in code.
+
+
+EXAMPLES
+
+0)
+{"..T..",
+ "T.S.T",
+ "..T.."}
+
+Returns: 1.0
+
+Whatever the initial direction of the tribble is, he is bound to enter a tribble-trouble.  Therefore, the program will always terminate.
+
+1)
+{"./..T",
+ ".\\..\\",
+ "S.../"}
+
+Returns: 0.25
+
+A tribble that starts off moving to the right will rebound a bit around the routers and end up hitting the tribble-trouble.  Any other starting direction will cause the tribble to fall off the board (please note that '\\' represents a single '\' character!)
+
+2)
+{"...W..T",
+ ".......",
+ "...S..."}
+
+Returns: 0.125
+
+The famous wherever object! The tribble has a 25% chance of initially going upwards. When it hits the wherever machine it has a 50% chance of going to the left and falling off and a 50% chance of going to the right and terminating the program. 25% * 50% = 12.5%
+
+3)
+{
+ "T......",
+ ".......",
+ "....W.T",
+ ".......",
+ "\\S../.."
+}
+
+Returns: 0.375
