@@ -1,0 +1,51 @@
+PROBLEM STATEMENT
+You are given several colored bricks. Every face of each brick has some color. Only seven colors are used. 
+Two bricks are equal if they have the same colors on corresponding faces, permitting arbitrary rotations in space.
+Return the minimum number of faces that must be repainted for all the bricks to be equal.
+You are given a vector <string> bricks, each element of which represents a single brick. Each brick is represented as a 6 character string containing the colors of the 6 faces in the following order: front, right, back, left, top and bottom. The digits '0' through '6' are used to denote the seven colors.
+
+
+DEFINITION
+Class:ColoredBricks
+Method:minRepaints
+Parameters:vector <string>
+Returns:int
+Method signature:int minRepaints(vector <string> bricks)
+
+
+CONSTRAINTS
+-bricks will contain between 1 and 50 elements, inclusive.
+-Each element of bricks will contain exactly six characters.
+-Each element of bricks will contain only the digits '0'-'6'.
+
+
+EXAMPLES
+
+0)
+{"012345", "012354"}
+
+Returns: 2
+
+These bricks are not the same.
+
+1)
+{"012345", "301245"}
+
+Returns: 0
+
+These bricks are the same.
+
+2)
+{"012012", "345345"}
+
+Returns: 6
+
+3)
+{"000000", "111111", "222222", "333333"}
+
+Returns: 18
+
+4)
+{"062413", "041246", "043134", "125611"}
+
+Returns: 9

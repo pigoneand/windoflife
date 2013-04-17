@@ -1,0 +1,73 @@
+PROBLEM STATEMENT
+A popular musical group 'Flattened' has decided to release a new album.
+It consists of nSongs songs. All songs are of the same length (given in seconds). A CD can store cdCapacity seconds of audio. 
+Each pair of consecutive songs must be separated by a 1 second pause.
+The group director is superstitious, so the number of songs on a CD must never be divisible by 13.
+Given these constraints, return the smallest number of CDs required to fit the entire album.
+
+
+
+DEFINITION
+Class:NewAlbum
+Method:leastAmountOfCDs
+Parameters:int, int, int
+Returns:int
+Method signature:int leastAmountOfCDs(int nSongs, int length, int cdCapacity)
+
+
+CONSTRAINTS
+-nSongs will be between 1 and 100, inclusive.
+-cdCapacity will be between 1 and 10000, inclusive.
+-length will be between 1 and cdCapacity, inclusive.
+
+
+EXAMPLES
+
+0)
+7
+2
+6
+
+Returns: 4
+
+There are at most two songs on each CD.
+
+1)
+20
+1
+100
+
+Returns: 1
+
+All the songs will fit on a single CD.
+
+
+2)
+26
+1
+100
+
+Returns: 2
+
+Even though all 26 songs will fit on a single CD, we must use two CDs because 26 is divisible by 13.
+
+3)
+26
+3
+51
+
+Returns: 3
+
+4)
+67
+271
+1000
+
+Returns: 23
+
+5)
+27
+1
+27
+
+Returns: 3

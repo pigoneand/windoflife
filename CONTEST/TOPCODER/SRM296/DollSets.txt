@@ -1,0 +1,62 @@
+PROBLEM STATEMENT
+A doll vendor has just received a shipment of dolls from the factory. Their sizes are given in the vector <int> dollSizes.  
+The vendor can only sell dolls in sets of two such that one doll is K times as large as the other.
+What is the maximum number of sets that the vendor can assemble?  Each doll can only be used in a single set.
+
+
+DEFINITION
+Class:DollSets
+Method:maximumQuantity
+Parameters:vector <int>, int
+Returns:int
+Method signature:int maximumQuantity(vector <int> dollSizes, int K)
+
+
+CONSTRAINTS
+-dollSizes will contain between 1 and 50 elements, inclusive.
+-Each element in dollSizes will be between 1 and 1000000, inclusive.
+-K will be between 1 and 25, inclusive
+
+
+EXAMPLES
+
+0)
+{1,2,1,2,4}
+2
+
+Returns: 2
+
+There are two possible ways to construct two sets: ({1,2},{1,2}) and ({1,2},{2,4}).
+
+1)
+{5,4,3,2,1}
+2
+
+Returns: 1
+
+You can construct either set {1,2} or set {2,4}.
+
+
+2)
+{5,4,1,2,3,4,5,67,8,9,8,7,15,12}
+3
+
+Returns: 3
+
+3)
+{1}
+25
+
+Returns: 0
+
+4)
+{1,9,81,729,1,81}
+9
+
+Returns: 2
+
+5)
+{1,2,2}
+1
+
+Returns: 1
