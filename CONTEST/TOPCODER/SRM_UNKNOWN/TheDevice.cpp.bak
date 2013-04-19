@@ -1,0 +1,16 @@
+import java.util.*;
+public class TheDevice {
+	public int minimumAdditional(String[] plates) {
+		
+	}
+	public static void main(String[] args) {
+		TheDevice temp = new TheDevice();
+		System.out.println(temp.minimumAdditional(String[] plates));
+	}
+}
+
+
+
+// Powered by FileEdit
+// Powered by TZTester 1.01 [25-Feb-2003]
+// Powered by CodeProcessor

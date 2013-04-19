@@ -1,0 +1,124 @@
+PROBLEM STATEMENT
+Manao is developing a simple 2-D computer game. The screen of the game is H pixels high and W pixels wide (1 <= H, W <= 50).
+
+Manao is currently working on the background which should be filled with several mountains. The contents of the screen are stored in an array of characters pix where pix[x, y] gives the contents of the pixel at column x, row y. Both indices are 0-based. Columns are numbered left to right and rows are numbered bottom to top. Character 'X' denotes a part of a mountain and character '.' means that this pixel is not covered by any mountains.
+
+Manao wants to draw N mountains in order to achieve the necessary background. The i-th (0-based index) mountain is described by its peak position (X[i], Y[i]), 0 <= X[i] < W, 0 <= Y[i] < H. In order to draw the mountains, the following pseudocode is used:
+
+Fill all elements of pix with '.' characters.
+For 0 <= i < N:
+??For 0 <= x < W:
+????For 0 <= y <= Y[i] - |x - X[i]|:
+??????pix[x, y] := 'X'
+
+For example, consider three mountains with peaks at (1, 1), (2, 2) and (4, 1). Once these mountains are drawn on a screen with H = 3, W = 6, the resulting picture will look as follows:
+
+..X...
+.XXXX.
+XXXXXX
+
+
+You are given a vector <string> picture describing the background which Manao wants to obtain. It contains H elements and each element contains W characters. The required value of pix[x, y] is given by x-th character of picture[H-y-1]. In other words, elements of picture list the rows of the screen from top to bottom.
+
+You are also given an int N. Count the number of sequences S of exactly N mountains such that when you draw all mountains from S on the screen as described above, the result will match the given picture. Return this number modulo 1,000,000,009.
+
+Note that the order of mountains in a sequence is important. Sequences containing the same mountains, but in a different order, are distinct. It is guaranteed that there exists at least one way to obtain the given picture by drawing exactly N mountains.
+
+DEFINITION
+Class:MountainsEasy
+Method:countPlacements
+Parameters:vector <string>, int
+Returns:int
+Method signature:int countPlacements(vector <string> picture, int N)
+
+
+CONSTRAINTS
+-picture will contain between 1 and 50 elements, inclusive.
+-Each element of picture will be between 1 and 50 characters long, inclusive.
+-All elements of picture will be of the same length.
+-Each element of picture will consist of 'X' and '.' characters only.
+-N will be between 1 and 50, inclusive.
+-picture can be obtained by drawing exactly N mountains according to the rules given in the problem statement.
+
+
+EXAMPLES
+
+0)
+{"X.",
+ "XX"}
+1
+
+Returns: 1
+
+This is a mountain (0, 1).
+
+1)
+{"X.",
+ "XX"}
+2
+
+Returns: 5
+
+Here one of the mountains is completely covered by the other. The five possible sequences are: 
+
+(0, 1), (0, 1)
+(0, 1), (0, 0)
+(0, 1), (1, 0)
+(0, 0), (0, 1)
+(1, 0), (0, 1)
+
+
+2)
+{"X.X",
+ "XXX"}
+2
+
+Returns: 2
+
+The two possible sequences are:
+
+(0, 1), (2, 1) 
+(2, 1), (0, 1) 
+
+
+
+3)
+{"X.X",
+ "XXX"}
+3
+
+Returns: 24
+
+
+
+4)
+{"......",
+ "X..X..",
+ "XXXXXX",
+ "XXXXXX"}
+3
+
+Returns: 6
+
+There are three mountains (0, 2), (3, 2), (5, 1) placed in any order.
+
+5)
+{"......",
+ "X..X..",
+ "XXXXXX",
+ "XXXXXX"}
+4
+
+Returns: 300
+
+
+
+6)
+{"....X...X..",
+ "...XXX.XXX.",
+ "XXXXXXXXXXX"}
+10
+
+Returns: 764632413
+
+

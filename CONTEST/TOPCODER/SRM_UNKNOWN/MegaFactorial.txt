@@ -1,0 +1,70 @@
+PROBLEM STATEMENT
+The factorial of the k-th order of a number n is denoted n!k and defined by the following recurrences:
+1) n!k = n!(k-1) * (n-1)!k for n > 0 and k > 0
+2) n!k = 1 for n = 0
+3) n!k = n for k = 0
+
+For example, 7!1 = 7! (the traditional factorial), and 5!3 = 5!2 * 4!3 = (5!1 * 4!2) * 4!3.
+
+You are given ints N, K and B. Count the number of trailing zeros in the number N!K when it is written in base B and return it modulo 1,000,000,009.
+
+DEFINITION
+Class:MegaFactorial
+Method:countTrailingZeros
+Parameters:int, int, int
+Returns:int
+Method signature:int countTrailingZeros(int N, int K, int B)
+
+
+CONSTRAINTS
+-N will be between 1 and 1,000,000,000 (10^9), inclusive.
+-K will be between 1 and 16, inclusive.
+-B will be between 2 and 10, inclusive.
+
+
+EXAMPLES
+
+0)
+6
+1
+4
+
+Returns: 2
+
+6!1 = 6! = 23100 in base 4.
+
+1)
+4
+2
+6
+
+Returns: 2
+
+4!2 = 4!1 * 3!2 = ... = 4! * 3! * 2! = 1200 in base 6.
+
+2)
+10
+3
+10
+
+Returns: 22
+
+
+
+3)
+50
+10
+8
+
+Returns: 806813906
+
+
+
+4)
+1000000000
+16
+2
+
+Returns: 633700413
+
+

@@ -1,0 +1,57 @@
+PROBLEM STATEMENT
+You are given a string that initially contains only a single letter.  After every second of time, all occurrences of the letter 'a' are replaced with "acb", all occurrences of the letter 'b' are replaced with "baa", and all occurrences of the letter 'c' are replaced with "bcb".  These replacements happen simultaneously during each second.  You are given three ints: left, right, and nSeconds.  Take the substring between positions left and right (both 0-based), inclusive, after nSeconds, and return a vector <int> containing exactly 3 elements.  The first element is the number of 'a's in the substring, the second element is the number of 'b's, and the third element is the number of 'c's.  For example, if letter = "a", then after 2 seconds, the string will be "acbbcbbaa".  If left = 2 and right = 6, the substring is "bbcbb", which contains no 'a's, 4 'b's, and 1 'c'.  Therefore, you will return {0, 4, 1}.
+
+
+DEFINITION
+Class:StringReplacements
+Method:substringCounter
+Parameters:string, int, int, int
+Returns:vector <int>
+Method signature:vector <int> substringCounter(string letter, int left, int right, int nSeconds)
+
+
+CONSTRAINTS
+-letter will be equal to "a", "b" or "c".
+-right will be between 0 and (3^nSeconds)-1, inclusive.
+-left will be between 0 and right, inclusive.
+-nSeconds will be between 0 and 20, inclusive.
+-left and right will each be less than or equal to 2147483647.
+
+
+EXAMPLES
+
+0)
+"a"
+2
+6
+2
+
+Returns: {0, 4, 1 }
+
+The example from the problem statement.
+
+1)
+"a"
+0
+2
+1
+
+Returns: {1, 1, 1 }
+
+The resulting string will be "acb".
+
+2)
+"c"
+1
+4
+2
+
+Returns: {2, 1, 1 }
+
+3)
+"b"
+4
+12
+3
+
+Returns: {2, 4, 3 }

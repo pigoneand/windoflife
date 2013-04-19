@@ -1,0 +1,14 @@
+// BEGIN CUT HERE
+
+// END CUT HERE
+import java.util.*;
+public class TheDevice {
+	public int minimumAdditional(String[] plates) {
+		
+	}
+	public static void main(String[] args) {
+		TheDevice temp = new TheDevice();
+		System.out.println(temp.minimumAdditional(String[] plates));
+	}
+}
+
