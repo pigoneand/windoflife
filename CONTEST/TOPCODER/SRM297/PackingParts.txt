@@ -1,0 +1,80 @@
+PROBLEM STATEMENT
+
+Given a set of parts and a set of boxes, you are asked to determine how many of the parts can be packed into  boxes. You can put at most one part into each box. In order for a part to fit into a box, the box must be the same size as or larger than the part. You follow the following process when packing the parts:
+
+
+Choose the smallest part that has not been packed yet.
+Find the smallest empty box the part fits into. If there is no such box, you cannot pack any more parts, and you stop.
+Pack the part into the box.
+If all parts have been packed, stop. Otherwise, continue with step 1.
+
+
+
+You are given a vector <int> partSizes containing the sizes of the parts, and a vector <int> boxSizes containing the sizes of the boxes. Both vector <int>s will be sorted in non-descending order.
+
+
+Return an int representing the maximum number of parts you can pack by following the process above.
+
+
+DEFINITION
+Class:PackingParts
+Method:pack
+Parameters:vector <int>, vector <int>
+Returns:int
+Method signature:int pack(vector <int> partSizes, vector <int> boxSizes)
+
+
+CONSTRAINTS
+-partSizes will contain between 1 and 50 elements, inclusive.
+-boxSizes will contain between 1 and 50 elements, inclusive.
+-Both partSizes and boxSizes will be sorted in non-decreasing order.
+-Each element in partSizes and boxSizes will be between 1 and 100, inclusive.
+
+
+EXAMPLES
+
+0)
+{2,2,2}
+{1,2,2,3}
+
+Returns: 3
+
+We have three parts of size 2. Two of them can be packed into boxes of size 2, and one into a box of size 3.
+
+1)
+{1,5}
+{2,5}
+
+Returns: 2
+
+The part of size 1 goes into the box of size 2 and the part of size 5 goes into the box of size 5.
+
+2)
+{10,10,10,10}
+{9,9,9,10,10,10}
+
+Returns: 3
+
+We have four parts of size 10, but only three boxes that can fit parts that big.
+
+3)
+{1,1,1,1}
+{1,2,2,3,6,7}
+
+Returns: 4
+
+Here, we have plenty of boxes to choose from.
+
+4)
+{1,1,1,1}
+{2,3,6}
+
+Returns: 3
+
+The boxes are big, but we only have three, so we cannot pack four parts.
+
+5)
+{10,32,46,55,55,84,100}
+{15,31,34,46,59,68,83,99}
+
+Returns: 6

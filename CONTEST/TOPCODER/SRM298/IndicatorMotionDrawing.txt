@@ -1,0 +1,89 @@
+PROBLEM STATEMENT
+In this problem, you will write a program that controls the actions of a progress indicator.  The indicator is a single bar character with one of 4 states: '|', '-', '\', and '/'.  The program consists of a sequence of instructions, where each instruction is one of 7 possible actions:
+'L': Spin left.  If the bar is in state '|', it goes to '\'.  State '\' goes to '-', '-' goes to '/', and '/' goes to '|'.
+'R': Spin right.  This is the exact opposite of 'L': '\' goes to '|', '|' goes to '/', '/' goes to '-', and '-' goes to '\'.
+'F': Flip.  The bar is rotated 90 degrees: '\' becomes '/', '/' becomes '\', '-' becomes '|', and '|' becomes '-'.
+'U': The bar moves up.
+'D': The bar moves down.
+'<': The bar moves left.
+'>': The bar moves right.
+
+Each instruction requires one second to complete. The computer's screen refresh is broken, so whenever the bar moves to a new location, its state at the previous location remains visible and the new location is overwritten with the bar's current state (see examples for clarification). To take advantage of this unexpected "feature", you've decided to come up with a game.
+Initially, the bar is at (0, 0), which is the upper-left corner of the screen, and it is in state startState.  The rest of the screen is empty. You are given a vector <string> with a desiredScreen that is your target. You must construct a program that will end with the screen looking exactly like desiredScreen.
+For example, if your desiredScreen is
+{"///",
+ "///",
+ "---"}
+and your startState is '-', you can achieve that with "L>>D<<DR>>". In this case, it took 10 seconds to get the screen to desiredScreen.
+
+For the given desiredScreen and startState, return the minimum time needed to achieve this goal, or -1 if it is impossible to do so.
+
+DEFINITION
+Class:IndicatorMotionDrawing
+Method:getMinSteps
+Parameters:vector <string>, char
+Returns:int
+Method signature:int getMinSteps(vector <string> desiredState, char startState)
+
+
+NOTES
+-The bar cannot be moved outside the boundary of desiredScreen.
+-Note that desiredScreen may contain spaces.  The bar can never pass through a cell which has a space in desiredScreen because it would leave a character that would never be erased.
+-In the examples the character '\' appears as '\\' because of the C++/Java syntax for escaping characters.
+
+
+CONSTRAINTS
+-startState will be one of '/', '\', '|', or '-'.
+-desiredScreen will have between 1 and 3 elements, inclusive.
+-Each element of desiredScreen will contain exactly N characters, where N is an integer between 1 and 4, inclusive.
+-Each character of each element of desiredScreen will be one of ' ', '/', '\', '|', or '-'.
+
+
+EXAMPLES
+
+0)
+{"///",
+ "///",
+ "---"}
+'-'
+
+Returns: 10
+
+The example from the problem statement.
+
+1)
+{" ||",
+ "|||",
+ "|||"}
+'|'
+
+Returns: -1
+
+Since the bar is initially at (0,0), it's impossible to achieve a desiredScreen that has a space at that location.
+
+2)
+{"/- ",
+ "/  ",
+ "/--"}
+'/'
+
+Returns: 9
+
+Don't step on spaces!
+Here, you are forced to step twice at least in (0,0). One way to achieve the best time is "R><LDD>R>".
+This will lead to this sequence of screens, with dots representing spaces and and the location of the bar written below each screen as (row,column):
+
+ /..      -..      --.      --.      /-.      /-.      /-.      /-.      /-.      /-.
+ ...  ->  ...  ->  ...  ->  ...  ->  ...  ->  /..  ->  /..  ->  /..  ->  /..  ->  /..
+ ...      ...      ...      ...      ...      ...      /..      //.      /-.      /--
+(0,0)    (0,0)    (0,1)    (0,0)    (0,0)    (1,0)    (2,0)    (2,1)    (2,1)    (2,2)
+
+      
+
+3)
+{"/-|/",
+ "/ |/",
+ "-/\\/"}
+'\\'
+
+Returns: 18

@@ -1,0 +1,94 @@
+PROBLEM STATEMENT
+Randomized quicksort is a popular divide-and-conquer sorting algorithm. Below is the pseudo-code for this algorithm:
+
+function quicksort(A)
+	if (length(A) <= some constant S) then
+		return slowsort(A)
+	else
+		k = random integer drawn uniformly from integers in [0, length(A) - 1]
+		(left, pivot, right) = partition(A, k)
+
+		return concatenate(quicksort(left), pivot, quicksort(right))
+	end if
+end function
+
+
+function partition(A, k)
+	pivot = A[k]
+
+	// We are assuming that the list contains no duplicates, so no other element is equal to the pivot
+	left = elements in A that are smaller than pivot
+	right = elements in A that are larger than pivot
+	return (left, pivot, right)
+end function
+
+
+Assume that partition(A) takes a * length(A) time units and slowsort(A) takes b * length(A)^2 time units. Further assume that the total running time is simply equal to the sum of the running times of all calls to partition() and slowsort(). As seen in the pseudo-code, quicksort does not call itself recursively on lists of length S or less, but instead calls slowsort().
+
+
+Consider using the randomized quicksort algorithm to sort a list that is some permutation of elements {x | 1 <= x <= listSize}. Hence, the list is of length listSize, only contains integers between 1 and listSize, inclusive, and contains no duplicates. You are given the constants a, b and S, and asked to compute the expected total running time of randomized quicksort on a list of size listSize that obeys the constraints given above.
+
+
+DEFINITION
+Class:RandomizedQuickSort
+Method:getExpectedTime
+Parameters:int, int, int, int
+Returns:double
+Method signature:double getExpectedTime(int listSize, int S, int a, int b)
+
+
+NOTES
+-Your answer must be within 1E-9 absolute or relative error.
+
+
+CONSTRAINTS
+-listSize will be between 1 and 1,000, inclusive.
+-S will be between 1 and 10, inclusive.
+-a and b will each be between 1 and 100, inclusive.
+
+
+EXAMPLES
+
+0)
+1
+1
+1
+1
+
+Returns: 1.0
+
+Since listSize = S, quicksort will not call itself recursively, but will instead simply call slowsort. The call to slowsort will take 1 * (1^2) = 1 time units.
+
+1)
+2
+1
+1
+1
+
+Returns: 3.0
+
+Quicksort will randomly select one of the two elements to be the pivot and then recurse on lists of size 1 and 0. The recursive calls will take 1 * (1^2) = 1 and 1 * (0^2) = 0 time units respectively. In addition, the initial call to partition() will take 1 * 2 = 2 time units, so the total expected running time is 1 + 2 = 3.
+
+2)
+3
+1
+1
+1
+
+Returns: 5.666666666666667
+
+3)
+3
+1
+1
+10
+
+Returns: 17.666666666666668
+
+4)
+10
+5
+3
+2
+
+Returns: 112.37380952380951

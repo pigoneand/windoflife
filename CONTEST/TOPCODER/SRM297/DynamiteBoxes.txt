@@ -1,0 +1,56 @@
+PROBLEM STATEMENT
+
+Consider a 2 x 2 x height stack of cube-shaped boxes of identical size. The stack has height levels of boxes, each level containing 4 boxes arranged in a 2 x 2 pattern. Each box has a 50% probability of containing dynamite and a 50% probability of being empty. Two dynamite-filled boxes, A and B, are in the same dynamite cluster if:
+
+
+a face of A touches a face of B
+OR a face of A touches a face of some box C, and C is in the same dynamite cluster as B.
+
+A stack is dangerous if it contains a dynamite cluster that contains at least dangerousClusterSize boxes. Given height and dangerousClusterSize, compute the probability that the stack is dangerous.
+
+DEFINITION
+Class:DynamiteBoxes
+Method:getProbability
+Parameters:int, int
+Returns:double
+Method signature:double getProbability(int height, int dangerousClusterSize)
+
+
+NOTES
+-Your answer must be within 1E-9 absolute or relative error.
+
+
+CONSTRAINTS
+-height will be between 1 and 30, inclusive.
+-dangerousClusterSize will be between 1 and 121, inclusive.
+
+
+EXAMPLES
+
+0)
+1
+1
+
+Returns: 0.9375
+
+Here, any stack that contains a dynamite-filled box is dangerous. There are 16 possible 2 x 2 x 1 stacks, each occurring with the same probability. Only one of the possible stacks is not dangerous - the stack with no dynamite-filled boxes. So, the answer is 15/16 = 0.9375.
+
+1)
+1
+2
+
+Returns: 0.5625
+
+In this example, stacks that contain dynamite-filled boxes that don't touch any other dynamite-filled boxes are not dangerous. There are 7 such stacks: 1 with no dynamite-filled boxes, 4 with a single dynamite-filled box, and 2 with two dynamite-filled boxes each placed diagonally so that they don't touch each other. The answer then is 1 - 7/16 = 0.5625.
+
+2)
+2
+4
+
+Returns: 0.51171875
+
+3)
+3
+3
+
+Returns: 0.859130859375

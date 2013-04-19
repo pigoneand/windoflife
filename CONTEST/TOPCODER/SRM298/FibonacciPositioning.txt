@@ -1,0 +1,59 @@
+PROBLEM STATEMENT
+The fibonacci sequence is a sequence of integers in which each number is equal to the sum of the two preceding numbers.  The first two integers in the sequence are both 1. Formally:
+
+ F1 = 1  
+ F2 = 1 
+ Fi = Fi-1 + Fi-2 for each i > 2 
+
+The beginning of this sequence is 1,1,2,3,5,8,13,21.
+We'll define the fibonacci position of an integer greater than or equal to 1 as follows:
+
+ The fibonacci position of 1 is 2 (since F2 = 1) 
+ The fibonacci position of any integer n > 1 such that Fi = n is i 
+ The fibonacci position of any integer n > 1 such that it is strictly between Fi and Fi+1 is i+(n-Fi)/(Fi+1-Fi) (informally, this means it is linearly distributed between Fi and Fi+1) 
+
+As examples, if FP(n) is the fibonacci position of n,
+FP(1)=2 (first rule) 
+FP(5)=5 (second rule F5 = 5) 
+FP(4)=4.5 (third rule, is right in the middle of F4 = 3 and F5 = 5)
+Given an integer n, return its fibonacci position as a double.
+
+DEFINITION
+Class:FibonacciPositioning
+Method:getFPosition
+Parameters:int
+Returns:double
+Method signature:double getFPosition(int n)
+
+
+NOTES
+-The returned value must be accurate to 1e-9 relative or absolute.
+
+
+CONSTRAINTS
+-n will be between 1 and 100000000 (108), inclusive.
+
+
+EXAMPLES
+
+0)
+1
+
+Returns: 2.0
+
+1)
+5
+
+Returns: 5.0
+
+2)
+4
+
+Returns: 4.5
+
+Examples from the problem statement.
+
+3)
+100
+
+Returns: 11.2

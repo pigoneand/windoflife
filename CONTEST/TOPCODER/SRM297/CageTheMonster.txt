@@ -1,0 +1,91 @@
+PROBLEM STATEMENT
+
+Your task is to place a monster inside a labyrinth, and prevent it from escaping by placing force
+fields around it. A force field creates a barrier that fills an entire row or column, so that the monster cannot enter it.
+There is no interference between walls and force fields, so force fields freely cross through
+the labyrinth walls. The labyrinth consists of empty spaces, denoted by '.', and walls, denoted by '#'.
+Locations where you can initially place the monster are denoted by '^', and otherwise behave like empty
+space.
+
+
+
+The monster can move up, down, left, and right, but not diagonally. If there is a path the monster can follow that ends outside of the map and does not go through any fields occupied by a wall or a force field, the monster will escape. Given that you get to choose the initial location of the monster, as well as the positions
+of the force fields, return the minimum number of force fields needed to prevent the monster from escaping from the labyrinth, or return
+-1 if the task is impossible. Note that force fields cannot cross through the initial position of the
+monster, and also cannot be created outside of the map (see Example 2).
+
+
+For example, consider the labyrinth below:
+
+
+.######..
+.#^^^^#..
+.#^^^^#..
+.#^^^^#..
+.##^^##..
+...^^....
+
+
+One way to contain the monster using only one force field is to position the monster as denoted by M, and
+create the force field denoted by F's:
+
+
+.######..
+.#....#..
+.#.M..#..
+.#....#..
+FFFFFFFFF
+.........
+
+
+DEFINITION
+Class:CageTheMonster
+Method:capture
+Parameters:vector <string>
+Returns:int
+Method signature:int capture(vector <string> labyrinth)
+
+
+CONSTRAINTS
+-labyrinth will contain between 1 and 40 elements, inclusive.
+-Each element of labyrinth will contain between 1 and 40 characters, inclusive.
+-All elements of labyrinth will be of the same length.
+-Each element of labyrinth will consist only of characters '.', '#' and '^'.
+-labyrinth will contain at least one '^' character.
+
+
+EXAMPLES
+
+0)
+{
+".######..",
+".#^^^^#..",
+".#^^^^#..",
+".#^^^^#..",
+".##^^##..",
+"...^^...."}
+
+Returns: 1
+
+This is the example from the problem statement.
+
+1)
+{
+".....",
+".^#^.",
+".#^#.",
+"..#.."}
+
+Returns: 0
+
+We can contain the monster by simply placing it in between the four walls.
+
+2)
+{
+"#....",
+"^#...",
+"#...."}
+
+Returns: -1
+
+Since we cannot create a force field in column -1, we cannot prevent the monster from escaping.

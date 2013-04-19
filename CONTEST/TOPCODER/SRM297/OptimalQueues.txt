@@ -1,0 +1,57 @@
+PROBLEM STATEMENT
+
+It is the beginning of the day at a bank, and a crowd of clients is already waiting for the entrance door to open. Once the bank opens, no more clients arrive, and tellerCount tellers begin serving the clients. A teller takes serviceTime minutes to serve each client. clientArrivals specifies how long each client has already been waiting at the moment when the bank door opens. Your program should determine the best way to arrange the clients into tellerCount queues, so that the waiting time of the client who waits longest is minimized. The waiting time of a client is the sum of the time the client waited outside before the bank opened, the time the client waited in a queue once the bank opened until the service began, and the service time of the client.
+
+
+Return the minimum waiting time for the client who waits the longest.
+
+
+
+DEFINITION
+Class:OptimalQueues
+Method:minWaitingTime
+Parameters:vector <int>, int, int
+Returns:int
+Method signature:int minWaitingTime(vector <int> clientArrivals, int tellerCount, int serviceTime)
+
+
+CONSTRAINTS
+-clientArrivals will contain between 1 and 50 elements, inclusive.
+-Each element in clientArrivals will be 0 and 100, inclusive.
+-tellerCount will be between 1 and 50, inclusive.
+-serviceTime will be between 1 and 100, inclusive.
+
+
+EXAMPLES
+
+0)
+{1,2}
+1
+10
+
+Returns: 21
+
+If the client who waited 1 minute goes first, the second client will have to wait 2 + 10 + 10 = 22 minutes in total. It is better for the client who waited 2 minutes to go first because then the waiting times are 12 and 21.
+
+1)
+{10}
+50
+50
+
+Returns: 60
+
+There is only one client who has waited 10 minutes, and the service time is 50 minutes, so the answer is 10 + 50 = 60.
+
+2)
+{10,10,10}
+2
+20
+
+Returns: 50
+
+3)
+{2,4,6,3,5}
+3
+10
+
+Returns: 23
