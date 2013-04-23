@@ -1,0 +1,69 @@
+PROBLEM STATEMENT
+
+The inhabitants of a certain magical country are known to be clever wizards.  Their King decided to test how clever they really were.
+
+
+
+He took 3 hats (2 white and 1 black) and put 2 smart wizards around a table.  He put a white hat on one of the wizards and a black hat on the other.  Each wizard could see what hat was on his neighbor, but could not see what hat was on his own head.  The wizards knew that there were 2 white hats and 1 black hat.  The King asked: "Do you know what hat is on your head?", and the wizard with the white hat answered: "Yes".  It's clear how he knew: he had seen the black hat on his neighbor, and knowing that there was only 1 black hat, concluded that his own hat was white.
+
+
+
+The King then decided to complicate their task a bit, and he put white hats on both the wizards.  He asked: "Do you know what hat is on your head?", and both wizards answered together: "No".  He asked again: "Do you know what hat is on your head?", and both wizards then answered: "Yes, we know.  We have white hats on our heads!".  How did they find out?  When the question was first asked, the first wizard had seen the white hat on his neighbor, but didn't know the color of his own hat, so he answered "No".  After hearing his neighbor's answer to the same question, he realized that his neighbor was in the same situation.  Therefore, both wizards knew that they were wearing white hats when the question was asked a second time.
+
+
+
+Let's consider a more general scenario.  You are given an int wizards representing the number of wizards participating in the test, and a vector <int> hats representing all the hats possessed by the King.  Each element of hats represents a different color, and the ith element of hats is the number of hats of color i.  You are also given a vector <int> hatsOnWizards, the ith element of which represents the number of hats of color i that are placed on wizards' heads (each wizard will receive exactly one hat).  The wizards all know what hats are initially possessed by the King.  Each wizard can see the hats worn by all the other wizards, but cannot see the hat on his own head.  Each time the King asks his question, the wizards all answer simultaneously, and each wizard can hear the answers given by all the other wizards.  Return the number of times the King must ask his question before at least one wizard will know the color of his own hat.  The King will always ask the question at least once.  If no wizard will ever know the color of his own hat, return -1.
+
+
+DEFINITION
+Class:Wizards
+Method:questions
+Parameters:int, vector <int>, vector <int>
+Returns:int
+Method signature:int questions(int wizards, vector <int> hats, vector <int> hatsOnWizards)
+
+
+CONSTRAINTS
+-wizards will be between 1 and 75, inclusive.
+-hats will contain between 2 and 5 elements, inclusive.
+-Each element of hats will be between 1 and 15, inclusive.
+-hatsOnWizards and hats will contain the same number of elements.
+-Each element of hatsOnWizards will be between 0 and the corresponding element in hats, inclusive.
+-All elements of hatsOnWizards will sum up to wizards.
+
+
+EXAMPLES
+
+0)
+2
+{1,2}
+{1,1}
+
+Returns: 1
+
+The first example from the problem statement.
+
+1)
+2
+{1,2}
+{0,2}
+
+Returns: 2
+
+The second example from the problem statement.
+
+2)
+2
+{2,2}
+{0,2}
+
+Returns: -1
+
+No wizard will ever know the color of his own hat.
+
+3)
+18
+{7,8,9}
+{5,4,9}
+
+Returns: 3

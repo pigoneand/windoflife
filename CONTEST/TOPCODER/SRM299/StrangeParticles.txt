@@ -1,0 +1,68 @@
+PROBLEM STATEMENT
+
+There are a number of strange particles flying in space and interacting with each other. When two particles collide, three outcomes are possible:
+
+1.) Nothing happens
+2.) The first particle disappears
+3.) The second particle disappears
+
+
+
+
+You will be given a vector <string> interacts, where the jth character of the ith element indicates what happens when the ith and jth particles collide. It will be '+' if the ith particle disappears, '-' if the jth particle disappears, and '0' (zero) if nothing happens.
+
+
+The particles will randomly collide and interact with each other for some period of time.  You don't know the order or the number of interactions that will occur.  After all the interactions are over, there will be a number of particles that have not disappeared.  Return the lowest possible value for this number.
+
+
+
+DEFINITION
+Class:StrangeParticles
+Method:remain
+Parameters:vector <string>
+Returns:int
+Method signature:int remain(vector <string> interacts)
+
+
+CONSTRAINTS
+-interacts will contain between 1 and 50 elements, inclusive.
+-Each element of interacts will contain the same number of characters as there are elements in interacts.
+-Each character in interacts will be '+', '-' or '0'.
+-Character i in element i of interacts will be '0'.
+-Character i in element j of interacts will be opposite to character j in element i ('-' is opposite to '+' and '+' is opposite to '-', '0' is opposite to itself)
+
+
+EXAMPLES
+
+0)
+{"0+-","-0+","+-0"}
+
+Returns: 1
+
+Three particles form a cycle. Only one particle can remain.
+
+1)
+{"000","000","000"}
+
+Returns: 3
+
+No particle can disappear at all.
+
+2)
+{"0++++++++++++++",
+ "-0+++++++++++++",
+ "--0++++++++++++",
+ "---0+++++++++++",
+ "----0++++++++++",
+ "-----0+++++++++",
+ "------0++++++++",
+ "-------0+++++++",
+ "--------0++++++",
+ "---------0+++++",
+ "----------0++++",
+ "-----------0+++",
+ "------------0++",
+ "-------------0+",
+ "--------------0"}
+
+Returns: 1

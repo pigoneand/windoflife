@@ -1,0 +1,77 @@
+PROBLEM STATEMENT
+The dating ritual can be pretty complex.  Here is how it works at a certain 
+cocktail party. All the men and women stand around in a circle, making chitchat.
+Eventually someone gets up his or her nerve and chooses the most desirable 
+remaining person of the opposite
+sex and those 2 go off and discuss world affairs privately.  This continues 
+until either everyone has left, or only one gender remains and they all go home.
+
+The original circle is described by a string circle containing lowercase letters
+for women and uppercase letters for men. The last one in circle is actually adjacent
+to the first one. Starting with the first person in circle, we count from
+1 to k around the circle, letting the k-th person be the first chooser. 
+Letters nearer the
+beginning of the alphabet represent hotter individuals, and the chooser always
+chooses the hottest remaining member of the opposite sex. Starting with the next remaining person
+after the last chooser we again count from one to k (counting only people who still remain in the
+circle) to determine the next chooser.
+This continues until the party breaks up.
+
+
+Create a class Dating that contains a method dates that is given circle and k and returns
+a string showing all the dates. The return should list each date as a 2 letter sequence,
+with the chooser before the chosen. The dates should appear in the order in which they
+were made, and with a single space between adjacent dates. There must be no leading
+or trailing spaces in the return.
+
+
+
+DEFINITION
+Class:Dating
+Method:dates
+Parameters:string, int
+Returns:string
+Method signature:string dates(string circle, int k)
+
+
+CONSTRAINTS
+-circle will contain between 1 and 50 characters, inclusive, all letters 'A'-'Z' or 'a'-'z'.
+-The characters in circle will be distinct.
+-k will be between 1 and 100, inclusive.
+
+
+EXAMPLES
+
+0)
+"abXCd"
+2
+
+Returns: "bC dX"
+
+
+
+   Starting at the beginning we count 'a' as 1 and 'b' as 2 so 'b' chooses 'C' since
+   'C' is a lot hotter than 'X'. Then we count 'X' as 1 and 'd' as 2 (since 'C' is
+   off discussing world affairs with 'b') so 'd' chooses 'X'. At this point only
+   'a' is left so the party breaks up.
+
+
+
+1)
+"abXCd"
+8
+
+Returns: "Xa dC"
+
+
+
+   We count all the way around the circle and arrive at 'X' as the first to choose. 
+   The next chooser is 'd' since we count all the way around the circle more than twice
+   (since there are only 3 people left at this point).
+
+
+2)
+"HGFhgfz"
+1
+
+Returns: "Hf Gg Fh"

@@ -1,0 +1,78 @@
+PROBLEM STATEMENT
+
+Due to historical reasons people measure temperature in different scales, such as Fahrenheit and Celsius. Your task is to convert a temperature from one scale to another. It is known that both scales are linear with respect to each other (i.e., 
+there are real numbers a and b such that temperature t presented in the first scale can be converted to the second by the law t'=a*t+b).
+
+
+You are given 5 ints: f1, the freezing point of water in the first scale; b1, the boiling point of water in the first scale; f2, the freezing point of water in the second scale; b2, the boiling point of water in the second scale; and t, the temperature in the first scale. Return t converted into the second scale.
+
+
+DEFINITION
+Class:TemperatureScales
+Method:convert
+Parameters:int, int, int, int, int
+Returns:double
+Method signature:double convert(int f1, int b1, int f2, int b2, int t)
+
+
+NOTES
+-The return value must be within 1e-9 absolute or relative error of the actual result.
+-Because the boiling and the freezing points of water depend on the atmospheric pressure, you may assume that both the scales are under the same circumstances.
+
+
+CONSTRAINTS
+-f1,b1,f2,b2 and t will each be between -1000 and 1000, inclusive.
+-f1 will be less than b1.
+-f2 will be less than b2.
+
+
+EXAMPLES
+
+0)
+0
+100
+0
+100
+28
+
+Returns: 28.0
+
+These are two identical scales, so temperatures in both of them coincide.
+
+1)
+0
+100
+1
+101
+28
+
+Returns: 29.0
+
+The second scale is shifted up 1 degree relative to the first scale.
+
+2)
+-1000
+-999
+-1000
+1000
+1000
+
+Returns: 3999000.0
+
+3)
+-10
+0
+1
+2
+17
+
+Returns: 3.7
+
+4)
+17
+98
+-123
+12
+22
+
+Returns: -114.66666666666667
