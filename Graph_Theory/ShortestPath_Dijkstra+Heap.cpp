@@ -15,27 +15,26 @@ using namespace std;
 
 class Dijkstra
 {
-  public:
-
-    static const int INFINITY = (1 << 30);
-
+public:
+    static const int INFI = (1 << 30);
+    
     /** About priority_queue in STL
      * template < class T, class Container = vector<T>,
      *            class Compare = less<typename Container::value_type> > class priority_queue;
      *
      * T: Type of the elements.
      * Container: Type of the underlying container object used to store and access the elements.
-     * Compare: Comparison class: A class such that the expression comp(a,b), 
-     * where comp is an object of this class and a and b are elements of the container, 
-     * returns true if a is to be placed earlier than b in a strict weak ordering operation. 
-     * This can either be a class implementing a function call operator or a pointer to a function. 
+     * Compare: Comparison class: A class such that the expression comp(a,b),
+     * where comp is an object of this class and a and b are elements of the container,
+     * returns true if a is to be placed earlier than b in a strict weak ordering operation.
+     * This can either be a class implementing a function call operator or a pointer to a function.
      * This defaults to less<T>, which returns the same as applying the less-than operator (a<b).
-     * The priority_queue object uses this expression when an element is inserted or removed from it 
-     * (using push or pop, respectively) to grant that the element popped is always 
+     * The priority_queue object uses this expression when an element is inserted or removed from it
+     * (using push or pop, respectively) to grant that the element popped is always
      * the greater in the priority queue.
      */
-
-    /** 
+    
+    /**
      * @param
      * graph : adjaency list format of this graph.
      * dim1 : each node
@@ -43,59 +42,58 @@ class Dijkstra
      * pair.first : edge node ID
      * pair.second : edge weight
      * source : start node
-     * target : target node = -1 means cal each node 
+     * target : target node = -1 means cal each node
      * @return
-     * the shortest path length from source node to each node 
+     * the shortest path length from source node to each node
      */
     static vector<int> shortestPath(vector<vector<pair<int, int> > > & graph, int source, int target)
     {
-      int N = graph.size();
-
-      vector<int> dist(N, INFINITY);
-      vector<int> previous(N, -1);
-      vector<bool> visit(N, false);
-      priority_queue<pair<int, int>, 
-        vector<pair<int, int> >,  greater<pair<int, int> > > queue;
-
-      dist[source] = 0;
-      queue.push(make_pair(0, source));
-
-      /** At most iteration N times, for each vertex */
-      for (int i = 0; i < N; ++i) 
-      {
-        if (queue.empty()) break;
-        while (!queue.empty() && visit[queue.top().second]) 
-          queue.pop();
-        if (queue.empty()) break;
-
-        /** Find the node which has not been visited and has the minimum distance */
-        pair<int, int> node = queue.top();
-        int minDis = node.first;
-        int minNode = node.second;
-        queue.pop();
-
-        /** If find the shortest path from source to target, then break */
-        if (minNode == target) break;
-
-        /** Mark this node to be visited, relax */
-        visit[minNode] = true;
-        /** For each edge this node link out */
-        for (int j = 0; j < graph[minNode].size(); ++j) 
+        int N = (int) graph.size();
+        
+        vector<int> dist(N, INFI);
+        vector<int> previous(N, -1);
+        vector<bool> visit(N, false);
+        priority_queue<pair<int, int>, vector<pair<int, int> >,  greater<pair<int, int> > > queue;
+        
+        dist[source] = 0;
+        queue.push(make_pair(0, source));
+        
+        /** At most iteration N times, for each vertex */
+        while (!queue.empty())
         {
-          int otherID = graph[minNode][j].first;
-          int weight = graph[minNode][j].second;
-          if (visit[otherID]) continue;
-          /** Do relaxation */
-          if (dist[minNode] + weight < dist[otherID]) 
-          {
-            dist[otherID] = dist[minNode] + weight;
-            previous[otherID] = minNode;
-            queue.push(make_pair(dist[otherID], otherID)); 
-          }
+            if (visit[queue.top().second])
+            {
+                queue.pop();
+                continue;
+            }
+            
+            /** Find the node which has not been visited and has the minimum distance */
+            pair<int, int> node = queue.top();
+            int minNode = node.second;
+            queue.pop();
+            
+            /** If find the shortest path from source to target, then break */
+            if (minNode == target) break;
+            
+            /** Mark this node to be visited, relax */
+            visit[minNode] = true;
+            /** For each edge this node link out */
+            for (int j = 0; j < graph[minNode].size(); ++j)
+            {
+                int otherID = graph[minNode][j].first;
+                int weight = graph[minNode][j].second;
+                if (visit[otherID]) continue;
+                /** Do relaxation */
+                if (dist[minNode] + weight < dist[otherID])
+                {
+                    dist[otherID] = dist[minNode] + weight;
+                    previous[otherID] = minNode;
+                    queue.push(make_pair(dist[otherID], otherID));
+                }
+            }
         }
-      }
-
-      return dist;
+        
+        return dist;
     }
 };
 
