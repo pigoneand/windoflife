@@ -15,7 +15,7 @@
 #include <stdio.h>
 using namespace std;
 
-#define DEBUG 0
+#define DEBUG 1
 #define debug1(x) if (DEBUG) cout << #x" = " << x << endl;
 #define debug2(x, y) if (DEBUG) cout << #x" = " << x << " " << #y" = " << y << endl;
 #define debug3(x, y, z) if (DEBUG) cout << #x" = " << x << " " << #y" = " << y << " " << #z" = " << z << endl;
@@ -58,115 +58,95 @@ ostream & operator << (ostream & out, const map<T1, T2> & m)
 #include <numeric>
 #include <functional>
 
-class Solution {
-public:
+int A, B, N;
+struct Seg
+{
+    int x1, x2, y;
+    int order;
     
-    bool couldTransform(const string& a, const string& b)
+    Seg(int _x1, int _x2, int _y, int _order) : x1(_x1), x2(_x2), y(_y), order(_order) {}
+    
+    bool operator < (const Seg& s) const
     {
-        int diff = 0;
-        for (unsigned int i = 0; i < a.length(); ++i)
-            if (a[i] != b[i]) diff++;
-        return diff == 1;
+        return y < s.y;
     }
     
-    vector<vector<int> > ansPaths;
-    vector<int> curPath;
-    
-    void dfs(int now, int offset, vector<vector<bool> >& p)
+    friend ostream& operator << (ostream& out, const Seg& s)
     {
-        curPath[offset] = now;
-        if (offset == 0)
-        {
-            ansPaths.push_back(curPath);
-            return;
-        }
-        for (int i = 0; i < p[now].size(); ++i)
-            if (p[now][i])
-                dfs(i, offset - 1, p);
-    }
-    
-    vector<vector<string>> findLadders(string start, string end, set<string> &dict) {
-        // Start typing your C/C++ solution below
-        // DO NOT write int main() function
-        
-        /// get all words in dicts, sort and unique it
-        dict.insert(start);
-        dict.insert(end);
-        vector<string> words(dict.begin(), dict.end());
-        map<string, int> dictMap;
-        for (unsigned int i = 0; i < words.size(); ++i) dictMap[words[i]] = i;
-        
-        /// get start string and end string offset in dicts
-        int N = (int) words.size();
-        int startOffset, endOffset;
-        for (unsigned int i = 0; i < words.size(); ++i)
-        {
-            if (words[i] == start) startOffset = i;
-            if (words[i] == end) endOffset = i;
-        }
-        
-        /// pre calculate the transform matrix
-        vector<vector<int> > adjLinked(N);
-        for (int i = 0; i < N; ++i)
-        {
-            string nowWord = words[i];
-            for (int l = 0; l < nowWord.size(); ++l)
-            {
-                for (char c = 'a'; c <= 'z'; ++c)
-                {
-                    if (c == words[i][l]) continue;
-                    nowWord[l] = c;
-                    if (dict.find(nowWord) != dict.end()) adjLinked[i].push_back(dictMap[nowWord]);
-                }
-                nowWord[l] = words[i][l];
-            }
-        }
-        
-        /// previous
-        vector<vector<bool> > previous(N, vector<bool>(N, false));
-        vector<int> minDis(N, 9999);
-        minDis[startOffset] = 1;
-        queue<int> q;
-        q.push(startOffset);
-        
-        while (q.size() > 0)
-        {
-            int now = q.front();
-            q.pop();
-            
-            for (int i = 0; i < adjLinked[now].size(); ++i)
-            {
-                int adj = adjLinked[now][i];
-                if (minDis[now] + 1 < minDis[adj])
-                {
-                    minDis[adj] = minDis[now] + 1;
-                    q.push(adj);
-                }
-                if (minDis[now] + 1 == minDis[adj])
-                    previous[adj][now] = true;
-            }
-        }
-        
-        vector<vector<string> > ans;
-        if (minDis[endOffset] == 9999) return ans;
-        
-        ansPaths.clear();
-        curPath.assign(minDis[endOffset], 0);
-        dfs(endOffset, minDis[endOffset] - 1, previous);
-        
-        
-        for (int i = 0; i < ansPaths.size(); ++i)
-        {
-            vector<string> s;
-            for (int j = 0; j < ansPaths[i].size(); ++j)
-                s.push_back(words[ansPaths[i][j]]);
-            ans.push_back(s);
-        }
-        return ans;
+        out << s.x1 << " " << s.x2 << " " << s.y << " " << s.order;
+        return out;
     }
 };
 
+vector<int> colors;
+vector<Seg> segs;
+vector<int> xs;
+
+void init()
+{
+    cin >> A >> B >> N;
+    colors.push_back(0);
+    colors.push_back(1);
+    segs.push_back(Seg(0, A, 0, 1));
+    segs.push_back(Seg(0, A, B, -1));
+    int rank = 1;
+    
+    while (N--)
+    {
+        int x1, y1, x2, y2, c;
+        cin >> x1 >> y1 >> x2 >> y2 >> c;
+        rank++;
+        colors.push_back(c);
+        segs.push_back(Seg(x1, x2, y1, +rank));
+        segs.push_back(Seg(x1, x2, y2, -rank));
+        xs.push_back(x1);
+        xs.push_back(x2);
+    }
+    xs.push_back(0);
+    xs.push_back(A);
+    
+    sort(segs.begin(), segs.end());
+    sort(xs.begin(), xs.end());
+    xs.resize(unique(xs.begin(), xs.end()) - xs.begin());
+}
+
+void york()
+{
+    vector<int> ans(2501, 0);
+    
+    for (int i = 0; i < (int) xs.size() - 1; ++i)
+    {
+        int x1 = xs[i];
+        int x2 = xs[i + 1];
+        multiset<int> orders;
+        
+        int lastY = 0;
+        for (int j = 0; j < segs.size(); ++j)
+        {
+            if (segs[j].x1 <= x1 && x2 <= segs[j].x2)
+            {
+                int nowY = segs[j].y;
+                int area = (nowY - lastY) * (x2 - x1);
+                if (area > 0) ans[colors[*orders.rbegin()]] += area;
+                if (segs[j].order > 0) orders.insert(segs[j].order);
+                else orders.erase(orders.find(-segs[j].order));
+                lastY = nowY;
+                //debug3(x1, x2, segs[j]);
+            }
+        }
+    }
+    
+    
+    for (int i = 1; i <= 2500; ++i)
+        if (ans[i] > 0)
+            printf("%d %d\n", i, ans[i]);
+}
+
 int main()
 {
-  return 0;
+    ios_base::sync_with_stdio(false);
+    init();
+    york();
+    
+    return 0;
 }

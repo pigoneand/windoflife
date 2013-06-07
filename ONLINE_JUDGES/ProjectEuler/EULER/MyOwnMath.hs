@@ -29,6 +29,14 @@ primeFactors x (p:ps)
     | x `mod` p == 0    = p : primeFactors (x `div` p) (p:ps)
     | otherwise         = primeFactors x ps
 
--- calculate number of factors in given number
-numberFactors x ps = product $ map (( \x -> x + 1 ) . length) $ group $ primeFactors x ps
+-- calculate number of divisors in given number
+numberOfDivisors 1 _  = 1
+numberOfDivisors x ps = product $ map (( \x -> x + 1 ) . length) $ group $ primeFactors x ps
 
+-- calculate sum of divisors of given number, include the number it self
+divisorsHelper x = (p ^ (l + 1) - 1) `div` (p - 1) where
+    p = x !! 0
+    l = length x
+sumOfDivisors 1 _ = 1
+sumOfDivisors 0 _ = 0
+sumOfDivisors x ps = (product $ map (divisorsHelper) $ group $ primeFactors x ps)
