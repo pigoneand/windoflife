@@ -1,0 +1,87 @@
+PROBLEM STATEMENT
+We have a system which contains a rectangular array of components. Some of these components may have already failed but the system is highly redundant. The system will be able to work as long as there is at least one collection of n or more working components that are connected.  A pair of components are connected if there is a path of adjacent components (horizontally, vertically, or diagonally) within the collection that goes from one component to the other component.  A collection of components is connected if all pairs of components within the collection are connected.
+
+
+We want to be able to estimate the chances of system failure. We call a component
+"critical" if its failure would bring down the system.
+  Create a class SysFailure that contains a method critical that
+is given n and the current state of the rectangular array and that returns the number
+of critical components. If the system has already failed, return -1.
+
+state will be given by a vector <string> of '0's and '1's
+where a '1' indicates a working component and a '0' represents a
+failed component. Each element of state represents a row of components, in order
+from top row to bottom row.
+
+
+
+DEFINITION
+Class:SysFailure
+Method:critical
+Parameters:int, vector <string>
+Returns:int
+Method signature:int critical(int n, vector <string> state)
+
+
+CONSTRAINTS
+-n will be between 1 and 1000, inclusive.
+-state will contain between 1 and 50 elements, inclusive.
+-Each element of state will contain the same number of characters.
+-The number of characters in an element of state will be between 1 and 50, inclusive.
+-Each element of state will contain only '1's and '0's (ones and zeroes).
+
+
+EXAMPLES
+
+0)
+4
+{ "00000",
+  "00000",
+  "11111" }
+
+Returns: 3
+
+
+
+   The 3 components in the center of the bottom row are critical.
+
+
+
+
+
+1)
+6
+{ "01010",
+  "10001",
+  "11011",
+  "10001",
+  "01010"} 
+
+Returns: 0
+
+
+
+   There are 2 separate collections of 6 connected working components. No matter
+   which component fails, one of these collections will still be able to 
+   keep the system working. So there are no critical components.
+
+2)
+4
+{ "111",
+  "111" }
+
+Returns: 0
+
+
+
+    Whichever component fails, there will still be 5 working components connected
+    together.
+
+3)
+2
+{ "101" }
+
+Returns: -1
+
+This system has already failed -- it has 2 groups of connected
+working components, but neither working group has 2 or more components.

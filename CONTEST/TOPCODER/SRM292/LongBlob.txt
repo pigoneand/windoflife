@@ -1,0 +1,112 @@
+PROBLEM STATEMENT
+A satellite image consists of a rectangular grid of 1x1 squares, each having
+a value of 0 or 1. We want to
+identify the longest "blob", where a blob is a collection of 0's that are
+connected orthogonally. The length of a blob is defined to be the maximum 
+Euclidean distance between the centers of any two 0's in the blob. For example,
+in the following image 
+       0010
+       1001
+       0011
+       0111   
+there are 2 blobs. The length of the big blob is sqrt(1+9), the distance
+between the 0 in the lower left corner and the one in row 0, 
+column 1. The length of the tiny blob is 0.
+
+The difficulty is that the image may contain some noise in the form of 1's 
+that should be 0's. We do not want to underestimate the length of the 
+longest blob.  So we will consider all different ways of choosing up to 4
+different 1's and replacing them with 0's.  Among all these altered images we
+want the length of the longest blob.
+
+Create a class LongBlob that contains a method maxLength that is given a 
+vector <string> image and that return the length of the longest blob when up to
+4 of the 1's in image are regarded as noise.
+
+
+
+DEFINITION
+Class:LongBlob
+Method:maxLength
+Parameters:vector <string>
+Returns:double
+Method signature:double maxLength(vector <string> image)
+
+
+NOTES
+-A return value with either an absolute or relative error of less than 1.0E-9 is considered correct.
+
+
+CONSTRAINTS
+-image will contain between 1 and 25 elements inclusive.
+-Each element of image will contain exactly n characters, where n is between 1 and 25 inclusive.
+-Each element of image will contain only the characters '0' (zero) and '1' (one).
+
+
+EXAMPLES
+
+0)
+{"0010",
+ "1001",
+ "0011",
+ "0111"}
+
+Returns: 4.242640687119285
+
+
+   This is the example given above but now by replacing 4 1's with 0's we can
+   get a blob that includes diagonally opposite corners. The distance between
+   two opposite corners is sqrt(9 + 9).
+
+
+
+1)
+{"101010101"}
+
+Returns: 7.0
+
+
+
+   Replace the first 4 1's with 0's. Then there is one long blob, whose length
+   is the distance between the first 0 (that used to be a 1) and the last 0.
+
+
+2)
+{"1010101010101010101010101",
+ "0101010101010101010101010",
+ "1010101010101010101010101",
+ "0101010101010101010101010",
+ "1010101010101010101010101",
+ "0101010101010101010101010",
+ "1010101010101010101010101",
+ "0101010101010101010101010",
+ "1010101010101010101010101",
+ "0101010101010101010101010",
+ "1010101010101010101010101",
+ "0101010101010101010101010",
+ "1010101010101010101010101",
+ "0101010101010101010101010",
+ "1010101010101010101010101",
+ "0101010101010101010101010",
+ "1010101010101010101010101",
+ "0101010101010101010101010",
+ "1010101010101010101010101",
+ "0101010101010101010101010",
+ "1010101010101010101010101",
+ "0101010101010101010101010",
+ "1010101010101010101010101",
+ "0101010101010101010101010",
+ "1010101010101010101010101"}
+
+Returns: 8.0
+
+3)
+{"01011",
+ "11100",
+ "01110",
+ "11111",
+ "01011",
+ "11111"}
+
+
+Returns: 5.656854249492381
