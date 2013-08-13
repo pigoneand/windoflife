@@ -1,0 +1,99 @@
+PROBLEM STATEMENT
+One Saturday evening you are playing a game of online Scrabble. Your opponent is a very good player, but this time you managed to win. After a brief conversation, you are told: "I am clearly better than you, but one game is simply not enough to prove it." Your opponent then makess the following bet: "If we play 10 games, you will win less than 5 ... and this will happen every time, even if we try this 10 times in a row!". 
+
+You will solve a more general problem using the following parameters: 
+- an int  trials  denoting the number of meetings in which a set of games is played. 
+- an int  games  denoting the number of games that are to be played in each meeting.
+- an int  winsNeeded  denoting the number of victories you need in one of the meetings to win the bet. 
+- an int  winChance  denoting the probability in percent of winning one particular game. 
+Return a double between 0 and 1, denoting the probability you have to win the bet.
+
+
+
+DEFINITION
+Class:ScrabbleBet
+Method:estimate
+Parameters:int, int, int, int
+Returns:double
+Method signature:double estimate(int trials, int games, int winsNeeded, int winChance)
+
+
+NOTES
+-Your return value must have an absolute or relative error less than 1e-9.
+
+
+CONSTRAINTS
+- trials  will be between 1 and 50, inclusive.
+- games  will be between 1 and 20, inclusive.
+- winsNeeded will be between 1 and  games, inclusive.
+- winChance  will be between 0 and 100, inclusive.
+
+
+EXAMPLES
+
+0)
+2
+2
+1
+50
+
+Returns: 0.9375
+
+There are 4 possible ways a meeting could evolve: 
+ - you lose both games.
+ - you lose game 1 and you win game 2.
+ - you win game 1 and you lose game 2.
+ - you win both games. 
+Your opponent has a 1/4 chance of not losing the bet after the first meeting. Since there are two meetings, your opponent's chances to win the bet are 1/4 * 1/4 = 1/16. Thus, you have a 15/16 chance to win the bet.
+
+
+1)
+2
+2
+2
+50
+
+Returns: 0.4375
+
+This time your opponent has a 3/4 chance of not losing the bet after one meeting and a 9/16 chance of not losing the bet after the two meetings. Your chances are now 1 - 9/16 = 7/16.
+
+
+2)
+10
+10
+5
+25
+
+Returns: 0.5566860567603682
+
+3)
+2
+20
+5
+10
+
+Returns: 0.08448495352665641
+
+4)
+50
+15
+1
+0
+
+Returns: 0.0
+
+5)
+50
+17
+16
+100
+
+Returns: 1.0
+
+6)
+50
+10
+10
+75
+
+Returns: 0.9448701546682944

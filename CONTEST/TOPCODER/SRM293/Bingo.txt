@@ -1,0 +1,97 @@
+PROBLEM STATEMENT
+In Bingo, you have a card with five columns and five rows. The columns are labeled 
+'B', 'I',  'N', 'G' and 'O'. The columns contain 5 different numbers in the ranges 
+1-15, 16-30, 31-45, 46-60, and 61-75 respectively, except that the middle square of the middle column is 
+"FREE".  Letter-number combinations are called (such as B12) and you win when you get 
+five (or four + FREE) along a row, column, or one of the 2 diagonals on your card.
+
+vector <string> card will have exactly 6 elements. The first gives the column headings and the 
+next five give the numbers in each of the five rows on the card (with 'F' denoting FREE in the middle square). All elements are
+padded with space characters so that all the numbers (and the 'F') end in the third column, the sixth
+column, etc.  
+
+vector <string> calls will give the letter-number combinations that are called. The last
+element of calls will be "BINGO" indicating the end 
+of the game because another player has won. 
+
+Create a class Bingo that contains a method winner that is given card and calls and
+that returns either "YOU LOSE" or a string with the 4 or 5 calls (in the order in which
+they were called) that first allowed you to win. The calls in the return must be
+separated with commas and must contain no spaces.
+
+If the call that first allows you to win allows you to win in more than one way, the method
+must return the winning sequence that had the earliest call in it.
+
+
+
+DEFINITION
+Class:Bingo
+Method:winner
+Parameters:vector <string>, vector <string>
+Returns:string
+Method signature:string winner(vector <string> card, vector <string> calls)
+
+
+CONSTRAINTS
+-card will contain exactly 6 elements, each containing exactly 15 characters.
+-The first element of card will be "  B  I  N  G  O".
+-The other elements of card will each have 5 tokens right-justified in fields of size 3.
+-The third token in the fourth element of card will be "F". Otherwise each token will be a 1 or 2 digit number with no leading 0's in the appropriate range for its column.
+-The numbers within each column will be distinct.
+-calls will contain between 1 and 50 elements inclusive.
+-The elements of calls will be distinct.
+-The last element of calls will be "BINGO".
+-Each other element of calls will be a legal call: an uppercase letter followed by a 1 or 2 digit number (no leading 0's) in the appropriate range.
+
+
+EXAMPLES
+
+0)
+{ "  B  I  N  G  O",
+  " 12 22 33 55 66",
+  "  9 23 34 52 72",
+  "  1 24  F 59 71",
+  "  4 16 40 48 61",
+  "  3 18 41 49 63"}
+{"B12","B3","I16","N40","B2","O70","B1","B9","O71","B4","B7","B11","O68","BINGO"}
+
+Returns: "B12,B3,B1,B9,B4"
+
+
+When B4 is called, it completes a vertical line down the first column. The five calls
+that created the win are returned in the same order as they appeared in calls.
+
+
+
+1)
+{ "  B  I  N  G  O",
+  " 12 22 33 55 66",
+  "  9 23 34 52 72",
+  "  1 24  F 59 71",
+  "  4 16 40 48 61",
+  "  3 18 41 49 63"}
+{"B12","B3","I16","N40","B2","O70","B1","B9","BINGO"}
+
+Returns: "YOU LOSE"
+
+
+
+There is no win on your card after the 8 calls so you lose when 
+somebody else calls BINGO.
+ 
+
+2)
+{ "  B  I  N  G  O",
+  " 12 22 33 55 66",
+  "  9 23 34 52 72",
+  "  1 24  F 59 71",
+  "  4 16 40 48 61",
+  "  3 18 41 49 63"}
+{"O63","G48","I23","B9","B1","B4","B3","B7","B12","G49","BINGO"}
+
+Returns: "O63,G48,I23,B12"
+
+
+When B12 is called you have two different wins. But the first call in the
+diagonal win was earlier than the first call in the other win so the return
+shows the 4 calls from the diagonal win.
